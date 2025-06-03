@@ -5,4 +5,5 @@
 - Issue I found with cEOS is I am unable to ssh to the management segment. Tried Port translation to no avail.
 - With in couple of hours I've figured out how to use FRR in the way I was hoping to use cEOS.
 - FRR is a much lighter performant image with my Mac M1.
+- FRR/first_lab - basically just tested the routing and got ssh working
 
