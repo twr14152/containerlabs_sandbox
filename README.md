@@ -4,5 +4,5 @@
 - While cEOS is ok for basic networking not good for testing automation on my M1 hardware. Enter FRR
 - Issue I found with cEOS is I am unable to ssh to the management segment. Tried Port translation to no avail.
 - With in couple of hours I've figured out how to use FRR in the way I was hoping to use cEOS.
-- FRR is a much lighter image.
+- FRR is a much lighter performant image with my Mac M1.
 
