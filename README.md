@@ -6,4 +6,3 @@
 - With in couple of hours I've figured out how to use FRR in the way I was hoping to use cEOS.
 - FRR is a much lighter image.
 
-
