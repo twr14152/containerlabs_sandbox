@@ -1,4 +1,4 @@
-# Adding/upgrading image in docker/containerlab
+# Adding/upgrading image locally or in docker/containerlab
 
 Option 1 - Add an image from source locally
  - This works but it can bring issues if you go to the latest image.
