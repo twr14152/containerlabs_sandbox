@@ -1,7 +1,7 @@
 # Adding/upgrading image locally or in docker/containerlab
 
 Option 1 - Add an image from source locally
- - This works but it can bring issues if you go to the latest image.
+ - This works but in my case the image was buggy with my machine
  - Follow steps 1, 2, 3.
  - The result was a little buggy
 
