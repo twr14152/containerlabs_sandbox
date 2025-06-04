@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker pull frrouting/frr:latest
+docker pull quay.io/frrouting/frr:10.3.1
