@@ -1,0 +1,18 @@
+### **Step1 create Dockerfile
+# touch Dockerfile
+### **Step 2: Define the Base Image**
+FROM debian:latest
+#This tells Docker to build a container using **Debian** as the foundation.
+
+### **Step 3: Install Necessary Packages**
+
+RUN apt update && apt install -y frr frr-pythontools iproute2 net-tools
+
+### **Step 4: Copy Configuration Files (Optional)**
+#If you have local files to add (like **FRR config files**), copy them:
+# sudo chmod -R 755 /etc/frr
+# sudo cp -r /etc/frr ./frr-config
+COPY frr-config /etc/frr
+
+### **Step 5: Set Default Behavior**
+CMD ["/usr/lib/frr/frrinit.sh"]
