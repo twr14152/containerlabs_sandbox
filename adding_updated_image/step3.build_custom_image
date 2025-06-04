@@ -1,0 +1,1 @@
+docker build -t frr:v10.3.1 .
