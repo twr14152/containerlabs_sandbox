@@ -1,0 +1,25 @@
+name: lab1
+
+topology:
+  kinds:
+    ceos:
+      image: ceosimage:latest
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    ceos1:
+      kind: ceos
+    ceos2:
+      kind: ceos
+    client1:
+      kind: linux
+    client2:
+      kind: linux
+
+
+  links:
+    - endpoints: ["ceos1:eth1", "ceos2:eth1"]
+    - endpoints: ["ceos1:eth2", "ceos2:eth2"]
+    - endpoints: ["client1:eth1", "ceos1:eth3"]
+    - endpoints: ["client2:eth1", "ceos2:eth3"]
+
