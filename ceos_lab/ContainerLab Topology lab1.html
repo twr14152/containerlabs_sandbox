@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/tailwind.css">
+    <link rel="stylesheet" href="static/css/next.css">
+    <title>ContainerLab Topology lab1</title>
+</head>
+
+<body>
+    <div class="bg-white flex relative items-center h-screen w-screen">
+        <div class="container mx-auto px-6 flex flex-col justify-between items-center relative h-full w-full">
+            
+            <div class="flex flex-col">
+                <h1 class="font-thin text-center text-4xl text-gray-500 py-6 w-full">
+                    ContainerLab Topology <span class="uppercase font-light text-[#0386d2]">lab1</span>
+                </h1>
+                
+                <div class="flex items-center justify-center">
+                    <button type="button" id="h-btn" onclick="horizontal()"
+                        class="w-full border border-[#0386d2] text-base font-normal rounded-l-md text-[#0386d2] shadow-md hover:text-white hover:bg-[#0386d2] px-4 py-2">
+                        Horizontal Layout
+                    </button>
+                    <button type="button" id="v-btn" onclick="vertical()"
+                        class="w-full border-t border-b border-r border-[#0386d2] text-base font-normal rounded-r-md text-[#0386d2] shadow-md hover:text-white hover:bg-[#0386d2] px-4 py-2">
+                        Vertical Layout
+                    </button>
+                </div>
+            </div>
+            
+            <div id="clab-topology" class="mt-6 mb-6 w-full h-full">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var data = '{\u0022nodes\u0022:[{\u0022name\u0022:\u0022ceos1\u0022,\u0022image\u0022:\u0022ceosimage:latest\u0022,\u0022kind\u0022:\u0022ceos\u0022,\u0022state\u0022:\u0022running\/Up 51 minutes\u0022,\u0022ipv4_address\u0022:\u0022172.20.20.2\/24\u0022,\u0022ipv6_address\u0022:\u00223fff:172:20:20::2\/64\u0022},{\u0022name\u0022:\u0022ceos2\u0022,\u0022image\u0022:\u0022ceosimage:latest\u0022,\u0022kind\u0022:\u0022ceos\u0022,\u0022state\u0022:\u0022running\/Up 51 minutes\u0022,\u0022ipv4_address\u0022:\u0022172.20.20.4\/24\u0022,\u0022ipv6_address\u0022:\u00223fff:172:20:20::4\/64\u0022},{\u0022name\u0022:\u0022client1\u0022,\u0022image\u0022:\u0022ghcr.io\/hellt\/network-multitool\u0022,\u0022kind\u0022:\u0022linux\u0022,\u0022state\u0022:\u0022running\/Up 51 minutes\u0022,\u0022ipv4_address\u0022:\u0022172.20.20.3\/24\u0022,\u0022ipv6_address\u0022:\u00223fff:172:20:20::3\/64\u0022},{\u0022name\u0022:\u0022client2\u0022,\u0022image\u0022:\u0022ghcr.io\/hellt\/network-multitool\u0022,\u0022kind\u0022:\u0022linux\u0022,\u0022state\u0022:\u0022running\/Up 51 minutes\u0022,\u0022ipv4_address\u0022:\u0022172.20.20.5\/24\u0022,\u0022ipv6_address\u0022:\u00223fff:172:20:20::5\/64\u0022}],\u0022links\u0022:[{\u0022source\u0022:\u0022ceos1\u0022,\u0022source_endpoint\u0022:\u0022eth2\u0022,\u0022target\u0022:\u0022ceos2\u0022,\u0022target_endpoint\u0022:\u0022eth2\u0022},{\u0022source\u0022:\u0022client1\u0022,\u0022source_endpoint\u0022:\u0022eth1\u0022,\u0022target\u0022:\u0022ceos1\u0022,\u0022target_endpoint\u0022:\u0022eth3\u0022},{\u0022source\u0022:\u0022client2\u0022,\u0022source_endpoint\u0022:\u0022eth1\u0022,\u0022target\u0022:\u0022ceos2\u0022,\u0022target_endpoint\u0022:\u0022eth3\u0022},{\u0022source\u0022:\u0022ceos1\u0022,\u0022source_endpoint\u0022:\u0022eth1\u0022,\u0022target\u0022:\u0022ceos2\u0022,\u0022target_endpoint\u0022:\u0022eth1\u0022}]}'
+    </script>
+    <script src="static/js/next.js"></script>
+    <script src="static/js/script.js"></script>
+
+</body>
+
+</html>
