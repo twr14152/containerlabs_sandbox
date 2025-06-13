@@ -7,36 +7,47 @@ topology:
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:
-    p1:
+    core1:
       kind: linux
       image: quay.io/frrouting/frr:10.3.1
       binds:
-        - p1/daemons:/etc/frr/daemons
-        - p1/frr.conf:/etc/frr/frr.conf
-        - p1/enable_ssh.sh:/enable_ssh.sh 
-        - p1/vtysh.conf:/etc/frr/vtysh.conf
+        - core1/daemons:/etc/frr/daemons
+        - core1/frr.conf:/etc/frr/frr.conf
+        - core1/enable_ssh.sh:/enable_ssh.sh 
+        - core1/vtysh.conf:/etc/frr/vtysh.conf
       exec:
         - "/enable_ssh.sh"
-    p2:
+    core2:
       kind: linux
       image: quay.io/frrouting/frr:10.3.1
       binds:
-        - p2/daemons:/etc/frr/daemons
-        - p2/frr.conf:/etc/frr/frr.conf
-        - p2/enable_ssh.sh:/enable_ssh.sh 
-        - p2/vtysh.conf:/etc/frr/vtysh.conf
+        - core2/daemons:/etc/frr/daemons
+        - core2/frr.conf:/etc/frr/frr.conf
+        - core2/enable_ssh.sh:/enable_ssh.sh 
+        - core2/vtysh.conf:/etc/frr/vtysh.conf
       exec:
         - "/enable_ssh.sh"
-    p3:
+    d1:
       kind: linux
       image: quay.io/frrouting/frr:10.3.1
       binds:
-        - p1/daemons:/etc/frr/daemons
-        - p1/frr.conf:/etc/frr/frr.conf
-        - p1/enable_ssh.sh:/enable_ssh.sh
-        - p1/vtysh.conf:/etc/frr/vtysh.conf
+        - d1/daemons:/etc/frr/daemons
+        - d1/frr.conf:/etc/frr/frr.conf
+        - d1/enable_ssh.sh:/enable_ssh.sh
+        - d1/vtysh.conf:/etc/frr/vtysh.conf
       exec:
         - "/enable_ssh.sh"
+    d2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.3.1
+      binds:
+        - d2/daemons:/etc/frr/daemons
+        - d2/frr.conf:/etc/frr/frr.conf
+        - d2/enable_ssh.sh:/enable_ssh.sh
+        - d2/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - "/enable_ssh.sh"
+
     ce1:
       kind: ceos
     ce2:
@@ -48,11 +59,11 @@ topology:
 
 
   links:
-    - endpoints: ["ce1:eth1", "p1:eth1"]
+    - endpoints: ["ce1:eth1", "d1:eth2"]
     - endpoints: ["ce1:eth2", "client1:eth1"]
-    - endpoints: ["ce2:eth1", "p2:eth1"]
+    - endpoints: ["ce2:eth1", "d2:eth2"]
     - endpoints: ["ce2:eth2", "client2:eth1"]
-    - endpoints: ["p1:eth2", "p2:eth2"]
-    - endpoints: ["p1:eth3", "p3:eth1"]
-    - endpoints: ["p2:eth3", "p3:eth2"]
+    - endpoints: ["d1:eth1", "core1:eth2"]
+    - endpoints: ["core1:eth1", "core2:eth1"]
+    - endpoints: ["d2:eth1", "core2:eth2"]
 
