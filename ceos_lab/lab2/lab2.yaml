@@ -1,0 +1,58 @@
+name: lab2
+
+topology:
+  kinds:
+    ceos:
+      image: ceosimage:latest
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    p1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.3.1
+      binds:
+        - p1/daemons:/etc/frr/daemons
+        - p1/frr.conf:/etc/frr/frr.conf
+        - p1/enable_ssh.sh:/enable_ssh.sh 
+        - p1/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - "/enable_ssh.sh"
+    p2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.3.1
+      binds:
+        - p2/daemons:/etc/frr/daemons
+        - p2/frr.conf:/etc/frr/frr.conf
+        - p2/enable_ssh.sh:/enable_ssh.sh 
+        - p2/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - "/enable_ssh.sh"
+    p3:
+      kind: linux
+      image: quay.io/frrouting/frr:10.3.1
+      binds:
+        - p1/daemons:/etc/frr/daemons
+        - p1/frr.conf:/etc/frr/frr.conf
+        - p1/enable_ssh.sh:/enable_ssh.sh
+        - p1/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - "/enable_ssh.sh"
+    ce1:
+      kind: ceos
+    ce2:
+      kind: ceos
+    client1:
+      kind: linux
+    client2:
+      kind: linux
+
+
+  links:
+    - endpoints: ["ce1:eth1", "p1:eth1"]
+    - endpoints: ["ce1:eth2", "client1:eth1"]
+    - endpoints: ["ce2:eth1", "p2:eth1"]
+    - endpoints: ["ce2:eth2", "client2:eth1"]
+    - endpoints: ["p1:eth2", "p2:eth2"]
+    - endpoints: ["p1:eth3", "p3:eth1"]
+    - endpoints: ["p2:eth3", "p3:eth2"]
+
