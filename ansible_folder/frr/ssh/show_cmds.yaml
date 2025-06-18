@@ -1,0 +1,11 @@
+- name: Run multiple vtysh show commands on router via SSH
+  hosts: routers
+  gather_facts: false
+  tasks:
+    - name: Run multiple show commands
+      raw: "vtysh -c 'show interface description' -c 'show interface brief'"
+      register: show_output
+
+    - debug:
+          msg: "{{ show_output.stdout_lines }}"
+
