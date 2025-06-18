@@ -8,5 +8,5 @@
 
 
     - debug:
-          msg: "{{ show_output.stdout_lines }}"
+          msg: "{{ config_output.stdout_lines }}"
 
