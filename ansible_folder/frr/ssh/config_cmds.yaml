@@ -1,0 +1,12 @@
+- name: Configure router via vtysh
+  hosts: routers
+  gather_facts: false
+  tasks:
+    - name: Send config commands via vtysh
+      raw: "vtysh -c 'configure terminal' -c 'interface eth0' -c 'description ETH0__ANSIBLE' -c 'exit' -c 'exit' -c 'write memory'"
+      register: config_output
+
+
+    - debug:
+          msg: "{{ show_output.stdout_lines }}"
+
