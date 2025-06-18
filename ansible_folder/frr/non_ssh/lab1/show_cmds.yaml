@@ -1,0 +1,24 @@
+---
+- name: Gather FRR facts from containerlab routers
+  hosts: routers
+  gather_facts: false
+  tasks:
+
+    - name: Run 'show run' using vtysh inside container
+      delegate_to: localhost
+      command: docker exec {{ inventory_hostname }} vtysh -c "show running-config"
+      register: config_output
+
+    - name: Display routes
+      debug:
+          msg: "{{ config_output.stdout_lines }}"
+
+    - name: Run 'show ip ospf neighbors' using vtysh inside container
+      delegate_to: localhost
+      command: docker exec {{ inventory_hostname }} vtysh -c "show ip ospf neighbor"
+      register: neighbor_output
+
+    - name: Display routes
+      debug:
+          msg: "{{ neighbor_output.stdout_lines }}"
+
