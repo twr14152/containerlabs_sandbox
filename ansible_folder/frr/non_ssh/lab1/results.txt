@@ -1,0 +1,324 @@
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1/non_ssh_connection$ ansible-playbook show_commands.yaml -i hosts 
+
+PLAY [Gather FRR facts from containerlab routers] **********************************************************************************************************************************
+
+TASK [Run 'show run' using vtysh inside container] *********************************************************************************************************************************
+changed: [clab-frr_lab-router2 -> localhost]
+changed: [clab-frr_lab-router1 -> localhost]
+changed: [clab-frr_lab-router3 -> localhost]
+
+TASK [Display routes] **************************************************************************************************************************************************************
+ok: [clab-frr_lab-router1] => {
+    "msg": [
+        "Building configuration...",
+        "",
+        "Current configuration:",
+        "!",
+        "frr version 10.3.1_git",
+        "frr defaults traditional",
+        "hostname router1",
+        "no ipv6 forwarding",
+        "service integrated-vtysh-config",
+        "!",
+        "interface eth0",
+        " description ETH0__ANSIBLE",
+        "exit",
+        "!",
+        "interface eth1",
+        " ip address 192.168.1.1/24",
+        "exit",
+        "!",
+        "interface eth2",
+        " ip address 192.168.2.1/24",
+        "exit",
+        "!",
+        "interface eth3",
+        " ip address 192.168.11.1/24",
+        " ip ospf passive",
+        "exit",
+        "!",
+        "interface lo",
+        " ip address 10.10.10.1/32",
+        "exit",
+        "!",
+        "router ospf",
+        " network 10.10.10.1/32 area 0.0.0.0",
+        " network 192.168.1.0/24 area 0.0.0.0",
+        " network 192.168.2.0/24 area 0.0.0.0",
+        " network 192.168.11.0/24 area 0.0.0.0",
+        "exit",
+        "!",
+        "end"
+    ]
+}
+ok: [clab-frr_lab-router2] => {
+    "msg": [
+        "Building configuration...",
+        "",
+        "Current configuration:",
+        "!",
+        "frr version 10.3.1_git",
+        "frr defaults traditional",
+        "hostname router2",
+        "no ipv6 forwarding",
+        "service integrated-vtysh-config",
+        "!",
+        "interface eth0",
+        " description ETH0__ANSIBLE",
+        "exit",
+        "!",
+        "interface eth1",
+        " ip address 192.168.1.2/24",
+        "exit",
+        "!",
+        "interface eth2",
+        " ip address 192.168.3.1/24",
+        "exit",
+        "!",
+        "interface eth3",
+        " ip address 192.168.12.1/24",
+        " ip ospf passive",
+        "exit",
+        "!",
+        "interface lo",
+        " ip address 10.10.10.2/32",
+        "exit",
+        "!",
+        "router ospf",
+        " network 10.10.10.2/32 area 0.0.0.0",
+        " network 192.168.1.0/24 area 0.0.0.0",
+        " network 192.168.3.0/24 area 0.0.0.0",
+        " network 192.168.12.0/24 area 0.0.0.0",
+        "exit",
+        "!",
+        "end"
+    ]
+}
+ok: [clab-frr_lab-router3] => {
+    "msg": [
+        "Building configuration...",
+        "",
+        "Current configuration:",
+        "!",
+        "frr version 10.3.1_git",
+        "frr defaults traditional",
+        "hostname router3",
+        "no ipv6 forwarding",
+        "service integrated-vtysh-config",
+        "!",
+        "interface eth0",
+        " description ETH0__ANSIBLE",
+        "exit",
+        "!",
+        "interface eth1",
+        " ip address 192.168.2.3/24",
+        "exit",
+        "!",
+        "interface eth2",
+        " ip address 192.168.2.3/24",
+        "exit",
+        "!",
+        "interface eth3",
+        " ip address 192.168.11.3/24",
+        " ip ospf passive",
+        "exit",
+        "!",
+        "interface lo",
+        " ip address 10.10.10.3/32",
+        "exit",
+        "!",
+        "router ospf",
+        " network 10.10.10.3/32 area 0.0.0.0",
+        " network 192.168.1.0/24 area 0.0.0.0",
+        " network 192.168.2.0/24 area 0.0.0.0",
+        " network 192.168.11.0/24 area 0.0.0.0",
+        "exit",
+        "!",
+        "end"
+    ]
+}
+
+TASK [Run 'show ip ospf neighbors' using vtysh inside container] *******************************************************************************************************************
+changed: [clab-frr_lab-router2 -> localhost]
+changed: [clab-frr_lab-router1 -> localhost]
+changed: [clab-frr_lab-router3 -> localhost]
+
+TASK [Display routes] **************************************************************************************************************************************************************
+ok: [clab-frr_lab-router1] => {
+    "msg": [
+        "",
+        "Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL",
+        "10.10.10.2        1 Full/DR         2h17m40s          30.969s 192.168.1.2     eth1:192.168.1.1                     0     0     0",
+        "10.10.10.3        1 Full/DR         2h17m35s          30.969s 192.168.2.3     eth2:192.168.2.1                     0     0     0"
+    ]
+}
+ok: [clab-frr_lab-router2] => {
+    "msg": [
+        "",
+        "Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL",
+        "10.10.10.1        1 Full/Backup     2h17m40s          30.971s 192.168.1.1     eth1:192.168.1.2                     0     0     0"
+    ]
+}
+ok: [clab-frr_lab-router3] => {
+    "msg": [
+        "",
+        "Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL",
+        "10.10.10.1        1 Full/Backup     2h17m35s          30.965s 192.168.2.1     eth1:192.168.2.3                     0     0     0"
+    ]
+}
+
+PLAY RECAP *************************************************************************************************************************************************************************
+clab-frr_lab-router1       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+clab-frr_lab-router2       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+clab-frr_lab-router3       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1/non_ssh_connection$ ansible-playbook config_commands.yaml -i hosts
+
+PLAY [Gather FRR facts from containerlab routers] **********************************************************************************************************************************
+
+TASK [Run config commands using vtysh inside container] ****************************************************************************************************************************
+changed: [clab-frr_lab-router1 -> localhost]
+changed: [clab-frr_lab-router3 -> localhost]
+changed: [clab-frr_lab-router2 -> localhost]
+
+TASK [Display config command output] ***********************************************************************************************************************************************
+ok: [clab-frr_lab-router1] => {
+    "msg": []
+}
+ok: [clab-frr_lab-router2] => {
+    "msg": []
+}
+ok: [clab-frr_lab-router3] => {
+    "msg": []
+}
+
+TASK [Run 'show running-config' using vtysh inside container] **********************************************************************************************************************
+changed: [clab-frr_lab-router2 -> localhost]
+changed: [clab-frr_lab-router1 -> localhost]
+changed: [clab-frr_lab-router3 -> localhost]
+
+TASK [Display running config] ******************************************************************************************************************************************************
+ok: [clab-frr_lab-router1] => {
+    "msg": [
+        "Building configuration...",
+        "",
+        "Current configuration:",
+        "!",
+        "frr version 10.3.1_git",
+        "frr defaults traditional",
+        "hostname router1",
+        "no ipv6 forwarding",
+        "service integrated-vtysh-config",
+        "!",
+        "interface eth1",
+        " ip address 192.168.1.1/24",
+        "exit",
+        "!",
+        "interface eth2",
+        " ip address 192.168.2.1/24",
+        "exit",
+        "!",
+        "interface eth3",
+        " ip address 192.168.11.1/24",
+        " ip ospf passive",
+        "exit",
+        "!",
+        "interface lo",
+        " ip address 10.10.10.1/32",
+        "exit",
+        "!",
+        "router ospf",
+        " network 10.10.10.1/32 area 0.0.0.0",
+        " network 192.168.1.0/24 area 0.0.0.0",
+        " network 192.168.2.0/24 area 0.0.0.0",
+        " network 192.168.11.0/24 area 0.0.0.0",
+        "exit",
+        "!",
+        "end"
+    ]
+}
+ok: [clab-frr_lab-router2] => {
+    "msg": [
+        "Building configuration...",
+        "",
+        "Current configuration:",
+        "!",
+        "frr version 10.3.1_git",
+        "frr defaults traditional",
+        "hostname router2",
+        "no ipv6 forwarding",
+        "service integrated-vtysh-config",
+        "!",
+        "interface eth1",
+        " ip address 192.168.1.2/24",
+        "exit",
+        "!",
+        "interface eth2",
+        " ip address 192.168.3.1/24",
+        "exit",
+        "!",
+        "interface eth3",
+        " ip address 192.168.12.1/24",
+        " ip ospf passive",
+        "exit",
+        "!",
+        "interface lo",
+        " ip address 10.10.10.2/32",
+        "exit",
+        "!",
+        "router ospf",
+        " network 10.10.10.2/32 area 0.0.0.0",
+        " network 192.168.1.0/24 area 0.0.0.0",
+        " network 192.168.3.0/24 area 0.0.0.0",
+        " network 192.168.12.0/24 area 0.0.0.0",
+        "exit",
+        "!",
+        "end"
+    ]
+}
+ok: [clab-frr_lab-router3] => {
+    "msg": [
+        "Building configuration...",
+        "",
+        "Current configuration:",
+        "!",
+        "frr version 10.3.1_git",
+        "frr defaults traditional",
+        "hostname router3",
+        "no ipv6 forwarding",
+        "service integrated-vtysh-config",
+        "!",
+        "interface eth1",
+        " ip address 192.168.2.3/24",
+        "exit",
+        "!",
+        "interface eth2",
+        " ip address 192.168.2.3/24",
+        "exit",
+        "!",
+        "interface eth3",
+        " ip address 192.168.11.3/24",
+        " ip ospf passive",
+        "exit",
+        "!",
+        "interface lo",
+        " ip address 10.10.10.3/32",
+        "exit",
+        "!",
+        "router ospf",
+        " network 10.10.10.3/32 area 0.0.0.0",
+        " network 192.168.1.0/24 area 0.0.0.0",
+        " network 192.168.2.0/24 area 0.0.0.0",
+        " network 192.168.11.0/24 area 0.0.0.0",
+        "exit",
+        "!",
+        "end"
+    ]
+}
+
+PLAY RECAP *************************************************************************************************************************************************************************
+clab-frr_lab-router1       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+clab-frr_lab-router2       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+clab-frr_lab-router3       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1/non_ssh_connection$ 
