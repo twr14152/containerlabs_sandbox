@@ -1,11 +1,11 @@
-(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1$ ansible-playbook config_commands.yaml -i hosts -u admin -k
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1/ssh_connection$ ansible-playbook config_commands.yaml -i hosts -u admin -k
 SSH password: 
 
 PLAY [Configure router via vtysh] **************************************************************************************************************************************************
 
 TASK [Send config commands via vtysh] **********************************************************************************************************************************************
-changed: [clab-frr_lab-router1]
 changed: [clab-frr_lab-router3]
+changed: [clab-frr_lab-router1]
 changed: [clab-frr_lab-router2]
 
 TASK [debug] ***********************************************************************************************************************************************************************
@@ -42,7 +42,7 @@ clab-frr_lab-router1       : ok=2    changed=1    unreachable=0    failed=0    s
 clab-frr_lab-router2       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 clab-frr_lab-router3       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1$ ansible-playbook show_commands.yaml -i hosts -u admin -k
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1/ssh_connection$ ansible-playbook show_commands.yaml -i hosts -u admin -k
 SSH password: 
 
 PLAY [Run multiple vtysh show commands on router via SSH] **************************************************************************************************************************
@@ -147,4 +147,4 @@ clab-frr_lab-router1       : ok=2    changed=1    unreachable=0    failed=0    s
 clab-frr_lab-router2       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 clab-frr_lab-router3       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1$ 
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1/ssh_connection$ 
