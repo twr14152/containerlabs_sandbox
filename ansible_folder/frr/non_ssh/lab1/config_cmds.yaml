@@ -1,0 +1,24 @@
+---
+- name: Gather FRR facts from containerlab routers
+  hosts: routers
+  gather_facts: false
+  tasks:
+
+    - name: Run config commands using vtysh inside container
+      delegate_to: localhost
+      shell: docker exec {{ inventory_hostname }} vtysh -c "configure terminal" -c "interface eth0" -c "no description"
+      register: config_output
+
+    - name: Display config command output
+      debug:
+        msg: "{{ config_output.stdout_lines }}"
+
+    - name: Run 'show running-config' using vtysh inside container
+      delegate_to: localhost
+      shell: docker exec {{ inventory_hostname }} vtysh -c "show running-config"
+      register: show_run_output
+
+    - name: Display running config
+      debug:
+        msg: "{{ show_run_output.stdout_lines }}"
+
