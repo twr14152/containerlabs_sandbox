@@ -1,0 +1,112 @@
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1$ ansible-playbook show_commands.yaml -i hosts -u admin -k
+SSH password: 
+
+PLAY [Run multiple vtysh show commands on router via SSH] **************************************************************************************************************************
+
+TASK [Run multiple show commands] **************************************************************************************************************************************************
+changed: [clab-frr_lab-router2]
+changed: [clab-frr_lab-router1]
+changed: [clab-frr_lab-router3]
+
+TASK [debug] ***********************************************************************************************************************************************************************
+ok: [clab-frr_lab-router1] => {
+    "msg": [
+        "",
+        "\tVRF default(0)",
+        "",
+        "Interface       Status  Protocol  Description",
+        "eth0            up      up        ",
+        "eth1            up      up        ",
+        "eth2            up      up        ",
+        "eth3            down    down      ",
+        "ip6tnl0         down    down      ",
+        "lo              up      up        ",
+        "sit0            down    down      ",
+        "tunl0           down    down      ",
+        "Interface       Status  VRF             Addresses",
+        "---------       ------  ---             ---------",
+        "eth0            up      default         172.20.20.3/24",
+        "                                        + 3fff:172:20:20::3/64",
+        "eth1            up      default         192.168.1.1/24",
+        "                                        fe80::a8c1:abff:fe65:77e1/64",
+        "eth2            up      default         192.168.2.1/24",
+        "                                        fe80::a8c1:abff:fe8e:74c8/64",
+        "eth3            down    default         ",
+        "ip6tnl0         down    default         ",
+        "lo              up      default         10.10.10.1/32",
+        "sit0            down    default         ",
+        "tunl0           down    default         ",
+        ""
+    ]
+}
+ok: [clab-frr_lab-router2] => {
+    "msg": [
+        "",
+        "\tVRF default(0)",
+        "",
+        "Interface       Status  Protocol  Description",
+        "eth0            up      up        ",
+        "eth1            up      up        ",
+        "eth2            down    down      ",
+        "eth3            down    down      ",
+        "ip6tnl0         down    down      ",
+        "lo              up      up        ",
+        "sit0            down    down      ",
+        "tunl0           down    down      ",
+        "Interface       Status  VRF             Addresses",
+        "---------       ------  ---             ---------",
+        "eth0            up      default         172.20.20.2/24",
+        "                                        + 3fff:172:20:20::2/64",
+        "eth1            up      default         192.168.1.2/24",
+        "                                        fe80::a8c1:abff:fe0a:c2ab/64",
+        "eth2            down    default         ",
+        "eth3            down    default         ",
+        "ip6tnl0         down    default         ",
+        "lo              up      default         10.10.10.2/32",
+        "sit0            down    default         ",
+        "tunl0           down    default         ",
+        ""
+    ]
+}
+ok: [clab-frr_lab-router3] => {
+    "msg": [
+        "",
+        "\tVRF default(0)",
+        "",
+        "Interface       Status  Protocol  Description",
+        "eth0            up      up        ",
+        "eth1            up      up        ",
+        "eth2            down    down      ",
+        "eth3            down    down      ",
+        "ip6tnl0         down    down      ",
+        "lo              up      up        ",
+        "sit0            down    down      ",
+        "tunl0           down    down      ",
+        "Interface       Status  VRF             Addresses",
+        "---------       ------  ---             ---------",
+        "eth0            up      default         172.20.20.4/24",
+        "                                        + 3fff:172:20:20::4/64",
+        "eth1            up      default         192.168.2.3/24",
+        "                                        fe80::a8c1:abff:fee8:43a9/64",
+        "eth2            down    default         ",
+        "eth3            down    default         ",
+        "ip6tnl0         down    default         ",
+        "lo              up      default         10.10.10.3/32",
+        "sit0            down    default         ",
+        "tunl0           down    default         ",
+        ""
+    ]
+}
+
+PLAY RECAP *************************************************************************************************************************************************************************
+clab-frr_lab-router1       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+clab-frr_lab-router2       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+clab-frr_lab-router3       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1$ cat hosts
+[routers]
+clab-frr_lab-router1  
+clab-frr_lab-router2  
+clab-frr_lab-router3  
+
+(myenv_py3.11) toddriemenschneider@clab:~/code_folder/ansible_folder/frr_lab1$ 
