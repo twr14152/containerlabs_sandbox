@@ -1,7 +1,7 @@
 # containerlabs_sandbox
 - This repo will store store some labs as I mess around with this tool.
 - Apple silicon has required me to go down this path.
-- So far just using cEOS and FRR for the routing and switching components
+- So far using srlinux, cEOS and FRR, (freely available)
 - With in couple of hours I've figured out how to use FRR in the way I was hoping to use cEOS.
 - After some digging I found I was making too difficult to ssh into cEOS containerlab has that working out of the gates
 - FRR is a much lighter performant image with my Mac M1.
@@ -12,4 +12,4 @@
   - Got ansible connected to FRR hosts can run show/config commands in ssh and non_ssh
 - ceos_labs/lab1 - first functional arista lab on this platform
 - ceos_labs/lab2 - More devices and eats more resources - if I reboot orbstack before running I have better success with it
-
+- srlinux - looks promising
