@@ -5,7 +5,7 @@ Option 1 - Add an image from source locally to your machine
 
 Option 2 - Docker pull
  - Probably the recommended way to get a new image would be to just use docker pull. 
-   - docker pull frrouting/frr:latest (deprocated)
+   - docker pull frrouting/frr:latest (deprecated)
    - docker pull quay.io/frrouting/frr:10.3.1 (new link)
 ```  
 toddriemenschneider@clab:~$  docker pull quay.io/frrouting/frr:10.3.1
