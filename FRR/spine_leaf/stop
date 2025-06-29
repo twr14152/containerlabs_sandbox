@@ -1,0 +1,2 @@
+#!/bin/sh
+containerlab destroy -t topo.yaml --cleanup
