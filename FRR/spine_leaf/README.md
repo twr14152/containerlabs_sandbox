@@ -8,7 +8,7 @@ To access linux hosts
 
 to access routers via ssh
 - username admin
-- passwore admin
+- password admin
 
 
 
