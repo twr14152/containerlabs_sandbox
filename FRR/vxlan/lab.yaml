@@ -1,0 +1,47 @@
+name: lab  
+topology:
+  nodes:
+    r1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.3.1
+      binds:
+        - r1/daemons:/etc/frr/daemons
+        - r1/frr.conf:/etc/frr/frr.conf
+        - r1/enable_ssh.sh:/enable_ssh.sh
+        - r1/vtysh.conf:/etc/frr/vtysh.conf
+        - r1/startup.sh:/etc/frr/startup.sh
+      exec:
+        - /enable_ssh.sh
+        - bash /etc/frr/startup.sh
+    r2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.3.1
+      binds:
+        - r2/daemons:/etc/frr/daemons
+        - r2/frr.conf:/etc/frr/frr.conf
+        - r2/enable_ssh.sh:/enable_ssh.sh
+        - r2/vtysh.conf:/etc/frr/vtysh.conf
+        - r2/startup.sh:/etc/frr/startup.sh
+      exec:
+        - /enable_ssh.sh
+        - bash /etc/frr/startup.sh
+    h1:
+      kind: linux
+      image: ghcr.io/hellt/network-multitool
+      exec:
+        - ip addr add 10.0.0.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.0.1
+    h2:
+      kind: linux
+      image: ghcr.io/hellt/network-multitool
+      exec:
+        - ip addr add 10.0.0.11/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.0.1
+
+  links:
+    # Underlay connection between routers
+    - endpoints: ["r1:eth1", "r2:eth1"]
+
+    # Hosts connected to routers
+    - endpoints: ["h1:eth1", "r1:eth2"]
+    - endpoints: ["h2:eth1", "r2:eth2"]
