@@ -1,0 +1,43 @@
+name: lab3
+
+topology:
+  kinds:
+    ceos:
+      image: ceosimage:latest
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    ceos1:
+      kind: ceos
+    ceos2:
+      kind: ceos
+    ceos3:
+      kind: ceos
+
+    h1:
+      kind: linux
+      exec:
+        - ip addr add 10.0.1.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.1.1
+        - ip link set eth1 up
+    h2:
+      kind: linux
+      exec:
+        - ip addr add 10.0.2.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.2.1
+        - ip link set eth1 up
+    h3:
+      kind: linux
+      exec:
+        - ip addr add 10.0.3.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.3.1
+        - ip link set eth1 up
+
+
+  links:
+    - endpoints: ["ceos1:eth1", "ceos2:eth1"]
+    - endpoints: ["ceos1:eth2", "ceos3:eth1"]
+    - endpoints: ["ceos3:eth2", "ceos2:eth2"]
+    - endpoints: ["h1:eth1", "ceos1:eth3"]
+    - endpoints: ["h2:eth1", "ceos2:eth3"]
+    - endpoints: ["h3:eth1", "ceos3:eth3"]
