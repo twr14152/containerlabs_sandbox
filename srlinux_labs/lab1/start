@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+containerlab deploy -t lab1.yaml
+

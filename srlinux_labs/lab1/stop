@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+containerlab destroy -t lab1.yaml
+
