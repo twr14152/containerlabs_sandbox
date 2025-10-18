@@ -1,4 +1,4 @@
-How to backup configs used in lab
+How to backup configs used in lab to /bkup
 ```
 todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/ceos_lab/lab3/scripts$ ./lab_script.py | tee bkup/config_file.txt
 Login into all devices?: (y/n)y
