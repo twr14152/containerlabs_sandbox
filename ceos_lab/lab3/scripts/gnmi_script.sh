@@ -70,6 +70,7 @@
 #  --path "/network-instances/network-instance[name=default]/protocols/protocol[identifier=OSPF][name=OSPF]/ospfv2" \
 #  --encoding json_ietf 
 
+#This didn't work either
 gnmic -a clab-lab3-ceos1:6030 -u admin -p admin --insecure cli -f enable_bfd.cli
 gnmic -a clab-lab3-ceos2:6030 -u admin -p admin --insecure cli -f enable_bfd.cli
 
