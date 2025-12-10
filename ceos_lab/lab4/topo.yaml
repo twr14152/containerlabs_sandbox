@@ -1,0 +1,70 @@
+name: lab4
+prefix: ""
+
+mgmt:
+  network: custom_mgmt
+  ipv4-subnet: 10.0.0.0/16
+
+
+topology:
+  kinds:
+    ceos:
+      image: ceosimage:latest
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    spine1:
+      kind: ceos
+      mgmt-ipv4: 10.0.1.1
+    
+    spine2:
+      kind: ceos
+      mgmt-ipv4: 10.0.1.2
+    
+    leaf1a:
+      kind: ceos
+      mgmt-ipv4: 10.0.2.1
+    
+    leaf1b:
+      kind: ceos
+      mgmt-ipv4: 10.0.2.2
+    
+    leaf2:
+      kind: ceos
+      mgmt-ipv4: 10.0.3.1
+
+    h1:
+      kind: linux
+      mgmt-ipv4: 10.0.2.10
+      exec:
+        - ip addr add 10.0.20.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.20.1
+        - ip link set eth1 up
+    h2:
+      kind: linux
+      mgmt-ipv4: 10.0.2.11
+      exec:
+        - ip addr add 10.0.20.11/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.20.1
+        - ip link set eth1 up
+    h3:
+      kind: linux
+      mgmt-ipv4: 10.0.3.10
+      exec:
+        - ip addr add 10.0.20.13/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.0.20.1
+        - ip link set eth1 up
+
+
+  links:
+    - endpoints: ["spine1:eth49", "spine2:eth49"]
+    - endpoints: ["spine1:eth50", "spine2:eth50"]
+    - endpoints: ["leaf1a:eth47", "leaf1b:eth47"]
+    - endpoints: ["leaf1a:eth48", "leaf1b:eth48"]
+    - endpoints: ["spine1:eth3", "leaf1a:eth49"]
+    - endpoints: ["spine1:eth4", "leaf2:eth1"]
+    - endpoints: ["spine2:eth3", "leaf1b:eth49"]
+    - endpoints: ["spine2:eth4", "leaf2:eth2"]
+    - endpoints: ["h1:eth1", "leaf1a:eth10"]
+    - endpoints: ["h2:eth1", "leaf1b:eth10"]
+    - endpoints: ["h3:eth1", "leaf2:eth10"]
