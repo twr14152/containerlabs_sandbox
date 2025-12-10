@@ -1,0 +1,3 @@
+#!/bin/bash
+
+containerlab inspect -t topo.yaml
