@@ -1,6 +1,4 @@
 #!/usr/bin/python3.12
-
-
 import requests
 import json
 import urllib3
