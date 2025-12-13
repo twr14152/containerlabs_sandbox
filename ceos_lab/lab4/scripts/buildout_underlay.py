@@ -1,4 +1,5 @@
 #!/usr/bin/python3.12
+
 import requests
 import json
 import urllib3
@@ -10,12 +11,24 @@ enable
 configure
 ip routing
 
+interface loopback0
+ description RtrID
+ ip address 1.1.1.1/32
+
+interface Loopback1
+ description Lo1 for VTEP
+ ip address 1.1.1.101/32
+
+
 interface Eth49
   no switchport
   ip address 10.1.0.1/31
 
 router bgp 65001
   router-id 1.1.1.1
+  network 1.1.1.1 mask 255.255.255.255
+  network 1.1.1.1 mask 255.255.255.255
+  network 1.1.1.101 mask 255.255.255.255
   neighbor 10.1.0.0 remote-as 65000
   address-family ipv4
 """
@@ -28,12 +41,23 @@ enable
 configure
 ip routing
 
+interface loopback0
+ description RtrID
+ ip address 1.1.1.2/32
+
+interface Loopback1
+ description Lo1 for VTEP
+ ip address 1.1.1.102/32
+
+
 interface Eth49
   no switchport
   ip address 10.1.0.3/31
 
 router bgp 65001
   router-id 1.1.1.2
+  network 1.1.1.2 mask 255.255.255.255
+  network 1.1.1.102 mask 255.255.255.255
   neighbor 10.1.0.2 remote-as 65000
   address-family ipv4
 """
@@ -43,6 +67,15 @@ enable
 configure
 ip routing
 
+interface loopback0
+ description RtrID
+ ip address 1.1.1.3/32
+
+interface Loopback1
+ description Lo1 for VTEP
+ ip address 1.1.1.103/32
+
+ 
 interface Eth1
   no switchport
   ip address 10.1.0.5/31
@@ -53,6 +86,8 @@ interface Eth2
 
 router bgp 65002
   router-id 1.1.1.3
+  network 1.1.1.3 mask 255.255.255.255
+  network 1.1.1.103 mask 255.255.255.255
   neighbor 10.1.0.4 remote-as 65000
   neighbor 10.1.0.6 remote-as 65000
   address-family ipv4
@@ -62,6 +97,10 @@ spine1_cfg = """
 enable 
 configure
 ip routing
+
+interface loopback0
+  description RtrID
+  ip address 100.100.100.1/32
 
 interface Eth3
   no switchport
@@ -73,6 +112,7 @@ interface Eth4
 
 router bgp 65000
   router-id 100.100.100.1
+  network 100.100.100.1 mask 255.255.255.255
   neighbor 10.1.0.1 remote-as 65001
   neighbor 10.1.0.5 remote-as 65002
   address-family ipv4
@@ -83,6 +123,10 @@ enable
 configure
 ip routing
 
+interface loopback0
+ description RtrID
+ ip address 100.100.100.2/32
+ 
 interface Eth3
   no switchport
   ip address 10.1.0.2/31
@@ -93,6 +137,7 @@ interface Eth4
 
 router bgp 65000
   router-id 100.100.100.2
+  network 100.100.100.2 mask 255.255.255.255
   neighbor 10.1.0.3 remote-as 65001
   neighbor 10.1.0.7 remote-as 65002
   address-family ipv4
