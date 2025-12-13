@@ -27,7 +27,6 @@ interface Eth49
 router bgp 65001
   router-id 1.1.1.1
   network 1.1.1.1 mask 255.255.255.255
-  network 1.1.1.1 mask 255.255.255.255
   network 1.1.1.101 mask 255.255.255.255
   neighbor 10.1.0.0 remote-as 65000
   address-family ipv4
