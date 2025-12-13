@@ -32,6 +32,10 @@ router bgp 65001
   neighbor 100.100.100.1 remote-as 65000
   neighbor 100.100.100.1 update-source loopback0
   neighbor 100.100.100.1 ebgp-multihop 5
+  vlan 20
+      rd auto
+      route-target both 65001:20020
+      redistribute learned
   address-family evpn
      neighbor 100.100.100.1 activate
 
@@ -50,7 +54,6 @@ interface Vxlan1
   vxlan source-interface Loopback1
   vxlan udp-port 4789
   vxlan vlan 20 vni 20020
-  no vxlan flood vtep 1.1.1.101
   vxlan flood vtep 1.1.1.103
 
 
@@ -67,7 +70,11 @@ router bgp 65001
   neighbor 100.100.100.2 remote-as 65000
   neighbor 100.100.100.2 update-source loopback0
   neighbor 100.100.100.2 ebgp-multihop 5
-  address-family evpn
+  vlan 20
+      rd auto
+      route-target both 65001:20020
+      redistribute learned
+ address-family evpn
      neighbor 100.100.100.2 activate
 
 
@@ -102,6 +109,10 @@ router bgp 65002
   neighbor 100.100.100.2 remote-as 65000
   neighbor 100.100.100.2 update-source loopback0
   neighbor 100.100.100.2 ebgp-multihop 5
+  vlan 20
+      rd auto
+      route-target both 65002:20020
+      redistribute learned
   address-family evpn
      neighbor 100.100.100.1 activate
      neighbor 100.100.100.2 activate
@@ -186,4 +197,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
