@@ -10,9 +10,9 @@ q3 = input("Login into clab-lab3-ceos2: (y/n)")
 q4 = input("Login into clab-lab3-ceos3: (y/n)")
 
 if len(q1) < 1: q1 == "n"
-if len(q2) < 1: q1 == "n"
-if len(q3) < 1: q1 == "n"
-if len(q4) < 1: q1 == "n"
+if len(q2) < 1: q2 == "n"
+if len(q3) < 1: q3 == "n"
+if len(q4) < 1: q4 == "n"
 
 if q1 == "y":
     config_commands = input("Enter configs: ")
