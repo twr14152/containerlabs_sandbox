@@ -3,7 +3,7 @@
 Testing
 - ospf only underlay with vxlan vtep/flood domain
   - worked
-  - Could ping between 3 different hosts of each leaf switch
+  - Could ping between 3 different hosts off each leaf switch
   - Believe it worked because ospf and vxlan flood domains were configured
 - ospf/bgp evpn
   - pings worked
