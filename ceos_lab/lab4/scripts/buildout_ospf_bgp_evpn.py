@@ -31,6 +31,7 @@ router bgp 65001
   router-id 1.1.1.1
   neighbor 100.100.100.1 remote-as 65000
   neighbor 100.100.100.1 update-source loopback0
+  neighbor 100.100.100.1 ebgp-multihop 5
   address-family evpn
      neighbor 100.100.100.1 activate
 
@@ -65,6 +66,7 @@ router bgp 65001
   router-id 1.1.1.2
   neighbor 100.100.100.2 remote-as 65000
   neighbor 100.100.100.2 update-source loopback0
+  neighbor 100.100.100.2 ebgp-multihop 5
   address-family evpn
      neighbor 100.100.100.2 activate
 
@@ -96,8 +98,10 @@ router bgp 65002
   router-id 1.1.1.3
   neighbor 100.100.100.1 remote-as 65000
   neighbor 100.100.100.1 update-source loopback0
+  neighbor 100.100.100.1 ebgp-multihop 5
   neighbor 100.100.100.2 remote-as 65000
   neighbor 100.100.100.2 update-source loopback0
+  neighbor 100.100.100.2 ebgp-multihop 5
   address-family evpn
      neighbor 100.100.100.1 activate
      neighbor 100.100.100.2 activate
@@ -111,8 +115,10 @@ configure
 router bgp 65000
  neighbor 1.1.1.1 remote-as 65001
  neighbor 1.1.1.1 update-source loopback0
+ neighbor 1.1.1.1 ebgp-multihop 5
  neighbor 1.1.1.3 remote-as 65002
  neighbor 1.1.1.3 update-source loopback0
+ neighbor 1.1.1.3 ebgp-multihop 5
  address-family  evpn
  neighbor 1.1.1.1 activate
  neighbor 1.1.1.3 activate
@@ -128,8 +134,10 @@ configure
 router bgp 65000
  neighbor 1.1.1.2 remote-as 65001
  neighbor 1.1.1.2 update-source loopback0
+ neighbor 1.1.1.2 ebgp-multihop 5
  neighbor 1.1.1.3 remote-as 65002
  neighbor 1.1.1.3 update-source loopback0
+ neighbor 1.1.1.3 ebgp-multihop 5
  address-family evpn
  neighbor 1.1.1.2 activate
  neighbor 1.1.1.3 activate
