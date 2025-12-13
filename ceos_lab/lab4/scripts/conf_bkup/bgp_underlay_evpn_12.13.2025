@@ -107,7 +107,6 @@ router bgp 65001
    neighbor 10.1.0.0 remote-as 65000
    !
    address-family evpn
-      neighbor 1.1.1.102 activate
       neighbor 1.1.1.103 activate
       neighbor 10.1.0.0 activate
    !
@@ -229,7 +228,6 @@ router bgp 65001
    neighbor 10.1.0.2 remote-as 65000
    !
    address-family evpn
-      neighbor 1.1.1.101 activate
       neighbor 1.1.1.103 activate
       neighbor 10.1.0.2 activate
    !
