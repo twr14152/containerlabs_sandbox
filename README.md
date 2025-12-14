@@ -1,4 +1,9 @@
 # containerlabs_sandbox
+- 12.13.2025 - Playing with evpn and vxlan on ceos in lab4
+- Three flavors of spine/leaf underlays and overlays
+  - ospf only vxlan - easiest implement
+  - ospf/bgp evpn - Can ping between multiple hosts off each leaf switch. Can also see mac addresses in evpn show commands. But the only way I was able to keep pings working was by leaving the flood lists in place on the VTEPS. 
+  - bgp/bgp evpn - Was the first lab I did it worked from a connectivity standpoint, however the mac-address table was not populating properly in evpn so this solution needs work.
 - This repo will store store some labs as I mess around with this tool.
 - Apple silicon has required me to go down this path.
 - So far using srlinux, cEOS and FRR, (all freely available)
@@ -12,4 +17,4 @@
   - Got ansible connected to FRR hosts can run show/config commands in ssh and non_ssh
 - ceos_labs/lab1 - first functional arista lab on this platform
 - ceos_labs/lab2 - More devices and eats more resources - if I reboot orbstack before running I have better success with it
-- srlinux - looks promising
+- srlinux - work-in-progress
