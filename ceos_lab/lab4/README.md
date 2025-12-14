@@ -4,6 +4,7 @@ Testing
 - ospf/bgp evpn - updated 12.14.2025
   - pings worked between h1 h2 and h3 (required flood list)
   - Can now see mac addresses from show bgp evpn mac
+  - Changed Lo1 on leaf1b to match Lo1 on leaf1a as it was causing DUPs to be sent to the h1 from pings from h3. Reason was because of the flood list on VTEP on leaf2 was sending to both 1.1.1.102 and 1.1.1.101. Changeing leaf1b Lo1 to 1.1.1.101 and removing .102 from flood list fixed the issue.
   - Had to keep flood lists on int vxlan1 in order for pings to continue to work
   - configs: /scripts/conf_bkup/ospf_bgp_evpn_12.14.2025
 
