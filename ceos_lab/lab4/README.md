@@ -8,7 +8,7 @@ Testing
   - Had to keep flood lists on int vxlan1 in order for pings to continue to work
   - configs: /scripts/conf_bkup/ospf_bgp_evpn_12.14.2025
 
-- Ospf only solution using vxlan 
+- Static vxlan solution  
   - Easiest of the solutions to implement
   - Meant for smaller environments
   - Could ping between 3 different hosts off each leaf switch
@@ -16,8 +16,11 @@ Testing
   - configs: /scripts/conf_bkup/ospf_only_underlay_build_12.13.2025
 
 - bgp/bgp evpn
-  - pings worked between hosts
-  - unable to see any mac addresses using show bgp evpn mac ??
+  - scripts to build
+    - buildout_bgp_underlay.py
+    - buildout_bgp_overlay.py
+    - The mlag configs were build prior to setting this up but would also be necessary for this to work
+    - caveat with the lab the evpn mac learning / forwarding does not work without the flood list in place on the leaf VTEPs. 
   - Needs work
-  -  configs: /scripts/conf_bkup/bgp_underlay_evpn_12.13.2025
+  -  configs: /scripts/conf_bkup/bgp_evpn_12.15.2025
 
