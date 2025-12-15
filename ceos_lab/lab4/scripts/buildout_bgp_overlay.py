@@ -26,15 +26,22 @@ interface Vlan20
    ip address 10.0.20.2/24
    ip virtual-router address 10.0.20.1
 
-
 router bgp 65001
-  neighbor 1.1.1.103 remote-as 65002
-  neighbor 1.1.1.103 update-source loopback1
-  neighbor 1.1.1.103 ebgp-multihop 5
-  address-family evpn
-     neighbor 1.1.1.102 activate
-     neighbor 1.1.1.103 activate
-     neighbor 10.1.0.0 activate
+   router-id 1.1.1.1
+   neighbor 100.100.100.1 remote-as 65000
+   neighbor 100.100.100.1 update-source Loopback0
+   neighbor 100.100.100.1 ebgp-multihop 5
+   !
+   vlan-aware-bundle VNI20
+      rd 65000:20020
+      route-target both 65000:20020
+      redistribute learned
+      vlan 20
+   !
+   address-family evpn
+      neighbor 100.100.100.1 activate
+   !
+!
 
 
 """
@@ -60,18 +67,22 @@ interface Vlan20
    ip address 10.0.20.3/24
    ip virtual-router address 10.0.20.1
 
-
-
 router bgp 65001
-  router-id 1.1.1.2
-  neighbor 1.1.1.103 remote-as 65002
-  neighbor 1.1.1.103 update-source loopback1
-  neighbor 1.1.1.103 ebgp-multihop 5
-  address-family evpn
-     neighbor 1.1.1.101 activate
-     neighbor 1.1.1.103 activate
-     neighbor 10.1.0.2 activate
-
+   router-id 1.1.1.2
+   neighbor 100.100.100.2 remote-as 65000
+   neighbor 100.100.100.2 update-source Loopback0
+   neighbor 100.100.100.2 ebgp-multihop 5
+   !
+   vlan-aware-bundle VNI20
+      rd 65000:20020
+      route-target both 65000:20020
+      redistribute learned
+      vlan 20
+   !
+   address-family evpn
+      neighbor 100.100.100.2 activate
+   !
+!
 
 """
 
@@ -87,7 +98,7 @@ interface Vxlan1
   vxlan source-interface Loopback1
   vxlan udp-port 4789
   vxlan vlan 20 vni 20020
-  vxlan flood vtep 1.1.1.101 1.1.1.102
+  vxlan flood vtep 1.1.1.101 
 
 interface Vlan20
    ip address 10.0.20.4/24
@@ -95,19 +106,28 @@ interface Vlan20
 
 ip virtual-router mac-address 00:1c:73:00:00:99
 
-
 router bgp 65002
-  neighbor 1.1.1.101 remote-as 65001
-  neighbor 1.1.1.101 update-source loopback1
-  neighbor 1.1.1.101 ebgp-multihop 5
-  neighbor 1.1.1.102 remote-as 65001
-  neighbor 1.1.1.102 update-source loopback1
-  neighbor 1.1.1.102 ebgp-multihop 5
-  address-family evpn
-     neighbor 1.1.1.101 activate
-     neighbor 1.1.1.102 activate
-     neighbor 10.1.0.4 activate
-     neighbor 10.1.0.6 activate
+   router-id 1.1.1.3
+   neighbor 100.100.100.1 remote-as 65000
+   neighbor 100.100.100.1 update-source Loopback0
+   neighbor 100.100.100.1 ebgp-multihop 5
+   neighbor 100.100.100.2 remote-as 65000
+   neighbor 100.100.100.2 update-source Loopback0
+   neighbor 100.100.100.2 ebgp-multihop 5
+   !
+   vlan-aware-bundle VNI20
+      rd 65000:20020
+      route-target both 65000:20020
+      redistribute learned
+      vlan 20
+   !
+   address-family evpn
+      neighbor 100.100.100.1 activate
+      neighbor 100.100.100.2 activate
+   !
+!
+
+
 
 """
 
@@ -116,11 +136,25 @@ enable
 configure
 
 router bgp 65000
- address-family  evpn
- neighbor 10.1.0.1 activate
- neighbor 10.1.0.5 activate
- neighbor 10.1.0.1 route-reflector-client
- neighbor 10.1.0.5 route-reflector-client
+   router-id 100.100.100.1
+   neighbor 1.1.1.1 remote-as 65001
+   neighbor 1.1.1.1 update-source Loopback0
+   neighbor 1.1.1.1 ebgp-multihop 5
+   neighbor 1.1.1.1 route-reflector-client
+   neighbor 1.1.1.3 remote-as 65002
+   neighbor 1.1.1.3 update-source Loopback0
+   neighbor 1.1.1.3 ebgp-multihop 5
+   neighbor 1.1.1.3 route-reflector-client
+   !
+   vlan-aware-bundle VNI20
+      rd 65000:20020
+      route-target both 65000:20020
+      vlan 20
+   !
+   address-family evpn
+      neighbor 1.1.1.1 activate
+      neighbor 1.1.1.3 activate
+   !
 
 """
 
@@ -129,11 +163,28 @@ enable
 configure
 
 router bgp 65000
- address-family evpn
- neighbor 10.1.0.3 activate
- neighbor 10.1.0.7 activate
- neighbor 10.1.0.3 route-reflector-client
- neighbor 10.1.0.7 route-reflector-client
+   router-id 100.100.100.2
+   neighbor 1.1.1.2 remote-as 65001
+   neighbor 1.1.1.2 update-source Loopback0
+   neighbor 1.1.1.2 ebgp-multihop 5
+   neighbor 1.1.1.2 route-reflector-client
+   neighbor 1.1.1.3 remote-as 65002
+   neighbor 1.1.1.3 update-source Loopback0
+   neighbor 1.1.1.3 ebgp-multihop 5
+   neighbor 1.1.1.3 route-reflector-client
+   !
+   vlan-aware-bundle VNI20
+      rd 65000:20020
+      route-target both 65000:20020
+      vlan 20
+   !
+   address-family evpn
+      neighbor 1.1.1.2 activate
+      neighbor 1.1.1.3 activate
+   !
+!
+
+
 
 """
 
