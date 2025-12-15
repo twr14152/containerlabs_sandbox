@@ -1,5 +1,6 @@
 #!/usr/bin/python3.12
 
+
 import requests
 import json
 import urllib3
@@ -16,7 +17,7 @@ interface loopback0
  ip address 1.1.1.1/32
 
 interface Loopback1
- description Lo1 for VTEP
+ description Lo1 for VTEP anycast
  ip address 1.1.1.101/32
 
 
@@ -45,8 +46,8 @@ interface loopback0
  ip address 1.1.1.2/32
 
 interface Loopback1
- description Lo1 for VTEP
- ip address 1.1.1.102/32
+ description Lo1 for VTEP anycast
+ ip address 1.1.1.101/32
 
 
 interface Eth49
@@ -56,7 +57,7 @@ interface Eth49
 router bgp 65001
   router-id 1.1.1.2
   network 1.1.1.2 mask 255.255.255.255
-  network 1.1.1.102 mask 255.255.255.255
+  network 1.1.1.101 mask 255.255.255.255
   neighbor 10.1.0.2 remote-as 65000
   address-family ipv4
 """
