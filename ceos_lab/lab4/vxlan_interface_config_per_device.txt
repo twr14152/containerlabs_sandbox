@@ -1,0 +1,61 @@
+Login into all devices?: (y/n)Login into leaf1a: (y/n)Login into leaf1b: (y/n)Login into leaf2: (y/n)Login into spine1: (y/n)Login into spine2: (y/n)Enter configs: Enter show commands: connecting to: leaf1a
+configure terminal
+leaf1a(config)#
+leaf1a(config)#end
+leaf1a#
+
+
+show run interface vxlan1:
+
+interface Vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 20 vni 20020
+   vxlan flood vtep 1.1.1.103
+connecting to: leaf1b
+configure terminal
+leaf1b(config)#
+leaf1b(config)#end
+leaf1b#
+
+
+show run interface vxlan1:
+
+interface Vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 20 vni 20020
+   vxlan flood vtep 1.1.1.103
+connecting to: leaf2
+configure terminal
+leaf2(config)#
+leaf2(config)#end
+leaf2#
+
+
+show run interface vxlan1:
+
+interface Vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 20 vni 20020
+   vxlan flood vtep 1.1.1.101
+connecting to: spine1
+configure terminal
+spine1(config)#
+spine1(config)#end
+spine1#
+
+
+show run interface vxlan1:
+
+
+connecting to: spine2
+configure terminal
+spine2(config)#
+spine2(config)#end
+spine2#
+
+
+show run interface vxlan1:
+
