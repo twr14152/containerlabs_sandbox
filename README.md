@@ -1,9 +1,10 @@
 # containerlabs_sandbox
 - 12.13.2025 - Playing with evpn and vxlan on ceos in lab4
-- Three flavors of spine/leaf underlays and overlays
-  - ospf only vxlan - easiest implement
-  - ospf/bgp evpn - Can ping between multiple hosts off each leaf switch. Can also see mac addresses in evpn show commands. But the only way I was able to keep pings working was by leaving the flood lists in place on the VTEPS. 
-  - bgp/bgp evpn - Was the first lab I did it worked from a connectivity standpoint, however the mac-address table was not populating properly in evpn so this solution needs work.
+- In the lab built out three flavors 
+    - static vxlan
+    - ospf/bgp evpn  
+    - bgp/bgp evpn
+- Configs for these solutions can be found in the lab4/scripts/conf_bkup
 - This repo will store store some labs as I mess around with this tool.
 - Apple silicon has required me to go down this path.
 - So far using srlinux, cEOS and FRR, (all freely available)
