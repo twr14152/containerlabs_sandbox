@@ -1,10 +1,11 @@
 # containerlabs_sandbox
-- 12.13.2025 - Playing with evpn and vxlan on ceos in lab4
-- In the lab built out three flavors 
+- 12.17.2026 - Going to test bgp unnumbered in lab ceos_lab/lab3.
+- 12.13.2025 - Playing with evpn and vxlan on ceos in ceos_lab/lab4
+  - In the lab built out three flavors 
     - static vxlan
     - ospf/bgp evpn  
     - bgp/bgp evpn
-- Configs for these solutions can be found in the lab4/scripts/conf_bkup
+  - Configs for these solutions can be found in the lab4/scripts/conf_bkup
 - This repo will store store some labs as I mess around with this tool.
 - Apple silicon has required me to go down this path.
 - So far using srlinux, cEOS and FRR, (all freely available)
