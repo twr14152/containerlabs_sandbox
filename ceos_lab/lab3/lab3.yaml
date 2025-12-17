@@ -5,7 +5,7 @@ topology:
     ceos:
       image: ceosimage:latest
     linux:
-      image: ghcr.io/hellt/network-multitool
+      image:  ghcr.io/srl-labs/network-multitool:latest
   nodes:
     ceos1:
       kind: ceos
