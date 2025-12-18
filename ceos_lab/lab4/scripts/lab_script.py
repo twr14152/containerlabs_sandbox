@@ -1,6 +1,7 @@
 #!/home/todd/Code_folder/containerlab/containerlabs_sandbox/myenv/bin/python
 
 from netmiko import ConnectHandler 
+import sys
 
 devices = ["leaf1a", "leaf1b", "leaf2", "spine1", "spine2"]
 
@@ -38,7 +39,6 @@ q5 = input("Login into spine1: (y/n)")
 q6 = input("Login into spine2: (y/n)")
 
 
-
 if len(q2) < 1: q2 == "n"
 if len(q3) < 1: q3 == "n"
 if len(q4) < 1: q4 == "n"
@@ -66,7 +66,6 @@ if q2 == "y":
     for cmd in show_cmds:
         output = net_connect.send_command(cmd)
         print(output)
-
 
 if q3 == "y":
     host = "leaf1b"
@@ -112,8 +111,6 @@ if q4 == "y":
         output = net_connect.send_command(cmd)
         print(output)
 
-
-
 if q5 == "y":
     host = "spine1"
     device = {
@@ -135,7 +132,6 @@ if q5 == "y":
     for cmd in show_cmds:
         output = net_connect.send_command(cmd)
         print(output)
-
 
 if q6 == "y":
     host = "spine2"
