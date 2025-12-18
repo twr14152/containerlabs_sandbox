@@ -1,11 +1,12 @@
 name: lab3
-
+prefix: ""
+  
 topology:
   kinds:
     ceos:
       image: ceosimage:latest
     linux:
-      image:  ghcr.io/srl-labs/network-multitool:latest
+      image: ghcr.io/srl-labs/network-multitool:latest
   nodes:
     ceos1:
       kind: ceos
@@ -41,3 +42,4 @@ topology:
     - endpoints: ["h1:eth1", "ceos1:eth3"]
     - endpoints: ["h2:eth1", "ceos2:eth3"]
     - endpoints: ["h3:eth1", "ceos3:eth3"]
+
