@@ -12,7 +12,7 @@ if ans == 'y':
     hosts = ["leaf1a", "leaf1b", "leaf2", "spine1", "spine2"]
     ans = input("Do you have a config or cmds file to load (y/n): ")
     if ans == 'y':
-        cfg_file = input("Enter file name (eg..'hostname.cmds' or 'hostname-description.cfg'): ")
+        cfg_file = input("Enter file name: ")
         with open(cfg_file) as f:
             cmds = f.read().splitlines()
         for host in hosts:
@@ -65,7 +65,7 @@ else:
     ans = input("Do you have a config or cmds file to load (y/n): ")
     if ans == 'y':
         for host in hosts:
-            cfg_file = input("Enter file name (eg..'hostname.cmds' or 'hostname-description.cfg'): ")
+            cfg_file = input("Enter file name: ")
             with open(cfg_file) as f:
                 cmds = f.read().splitlines()
             url = f"https://{host}/command-api"
