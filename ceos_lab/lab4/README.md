@@ -12,7 +12,7 @@ Testing
   - Easiest of the solutions to implement
   - Meant for smaller environments
   - Could ping between 3 different hosts off each leaf switch
-  - Requires vxlan flood list to remote VTEPs (Leafs)
+  - Requires Headend Replication flood list to remote VTEPs (Leafs)
   - configs: scripts/conf_bkup/ospf_only_underlay_build_12.13.2025
 
 - bgp/bgp evpn
