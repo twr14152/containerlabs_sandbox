@@ -1,0 +1,4 @@
+#!/bin/bash
+
+containerlab destroy -t topo.yaml
+
