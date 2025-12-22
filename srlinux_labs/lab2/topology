@@ -1,0 +1,3 @@
+#!/bin/bash
+
+containerlab graph -t lab2.yaml
