@@ -3,18 +3,14 @@
 import requests
 import json
 
-
 node = input("Enter node: ")
 url = f"http://{node}/jsonrpc"
 
 commands = input("Enter commands seperated by ',': ")
 cli_commands = commands.split(",")
 
-
-
 username = "admin"
 password = "NokiaSrl1!"
-
 
 payload = {
     "jsonrpc": "2.0",
