@@ -1,4 +1,5 @@
 name: "lab2"
+prefix: ""
 
 topology:
   kinds:
@@ -32,4 +33,5 @@ topology:
       ipv4: ["192.168.1.1/24", "192.168.1.2/24"]
     - endpoints: ["client1:eth1", "leaf1:e1-2"]
     - endpoints: ["client2:eth1", "leaf2:e1-2"]
+
 
