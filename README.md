@@ -1,5 +1,5 @@
 # containerlabs_sandbox
-- 12.17.2026 - Going to test bgp unnumbered in lab ceos_lab/lab3.
+- 12.22.2025 - Change of plans digging in to SR Linux
 - 12.13.2025 - Playing with evpn and vxlan on ceos in ceos_lab/lab4
   - In the lab built out three flavors 
     - static vxlan
@@ -7,7 +7,7 @@
     - bgp/bgp evpn
   - Configs for these solutions can be found in the lab4/scripts/conf_bkup
 - This repo will store store some labs as I mess around with this tool.
-- Apple silicon has required me to go down this path.
+- Apple silicon has required me to go down this path. 
 - So far using srlinux, cEOS and FRR, (all freely available)
 - With in couple of hours I've figured out how to use FRR in the way I was hoping to use cEOS.
 - After some digging I found I was making too difficult to ssh into cEOS containerlab has that working out of the gates
