@@ -1,0 +1,35 @@
+name: "lab2"
+
+topology:
+  kinds:
+    nokia_srlinux:
+      image: ghcr.io/nokia/srlinux:latest
+    linux:
+      image: ghcr.io/srl-labs/network-multitool:latest
+  nodes:
+    leaf1:
+      kind: nokia_srlinux
+    leaf2:
+      kind: nokia_srlinux
+    spine:
+      kind: nokia_srlinux
+    client1:
+      kind: linux
+      exec:
+        - ip link set address 00:c1:ab:00:00:01 dev eth1
+        - ip addr add 192.168.101.10/24 dev eth1
+    client2:
+      kind: linux
+      exec:
+        - ip link set address 00:c1:ab:00:00:02 dev eth1
+        - ip addr add 192.168.102.10/24 dev eth1
+
+
+  links:
+    - endpoints: ["leaf1:e1-1", "spine:e1-1"]
+      ipv4: ["192.168.0.1/24", "192.168.0.2/24"]
+    - endpoints: ["leaf2:e1-1", "spine:e1-2"]
+      ipv4: ["192.168.1.1/24", "192.168.1.2/24"]
+    - endpoints: ["client1:eth1", "leaf1:e1-2"]
+    - endpoints: ["client2:eth1", "leaf2:e1-2"]
+
