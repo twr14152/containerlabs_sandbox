@@ -1,0 +1,130 @@
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': show system lldp neighbor
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "LLDP-Interface": [
+        {
+          "Name": "ethernet-1/1",
+          "Neighbor": "1A:21:04:FF:00:00",
+          "Neighbor System Name": "spine",
+          "Neighbor Chassis ID": "1A:21:04:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "15 seconds ago",
+          "Neighbor Port": "ethernet-1/1"
+        },
+        {
+          "Name": "mgmt0",
+          "Neighbor": "1A:21:04:FF:00:00",
+          "Neighbor System Name": "spine",
+          "Neighbor Chassis ID": "1A:21:04:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "15 seconds ago",
+          "Neighbor Port": "mgmt0"
+        },
+        {
+          "Name": "mgmt0",
+          "Neighbor": "1A:7F:03:FF:00:00",
+          "Neighbor System Name": "leaf2",
+          "Neighbor Chassis ID": "1A:7F:03:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "23 seconds ago",
+          "Neighbor Port": "mgmt0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "LLDP-Interface": [
+        {
+          "Name": "ethernet-1/1",
+          "Neighbor": "1A:21:04:FF:00:00",
+          "Neighbor System Name": "spine",
+          "Neighbor Chassis ID": "1A:21:04:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "18 seconds ago",
+          "Neighbor Port": "ethernet-1/2"
+        },
+        {
+          "Name": "mgmt0",
+          "Neighbor": "1A:21:04:FF:00:00",
+          "Neighbor System Name": "spine",
+          "Neighbor Chassis ID": "1A:21:04:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "18 seconds ago",
+          "Neighbor Port": "mgmt0"
+        },
+        {
+          "Name": "mgmt0",
+          "Neighbor": "1A:60:02:FF:00:00",
+          "Neighbor System Name": "leaf1",
+          "Neighbor Chassis ID": "1A:60:02:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "5 seconds ago",
+          "Neighbor Port": "mgmt0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine
+200
+{
+  "result": [
+    {
+      "LLDP-Interface": [
+        {
+          "Name": "ethernet-1/1",
+          "Neighbor": "1A:60:02:FF:00:00",
+          "Neighbor System Name": "leaf1",
+          "Neighbor Chassis ID": "1A:60:02:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "8 seconds ago",
+          "Neighbor Port": "ethernet-1/1"
+        },
+        {
+          "Name": "ethernet-1/2",
+          "Neighbor": "1A:7F:03:FF:00:00",
+          "Neighbor System Name": "leaf2",
+          "Neighbor Chassis ID": "1A:7F:03:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "28 seconds ago",
+          "Neighbor Port": "ethernet-1/1"
+        },
+        {
+          "Name": "mgmt0",
+          "Neighbor": "1A:60:02:FF:00:00",
+          "Neighbor System Name": "leaf1",
+          "Neighbor Chassis ID": "1A:60:02:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "8 seconds ago",
+          "Neighbor Port": "mgmt0"
+        },
+        {
+          "Name": "mgmt0",
+          "Neighbor": "1A:7F:03:FF:00:00",
+          "Neighbor System Name": "leaf2",
+          "Neighbor Chassis ID": "1A:7F:03:FF:00:00",
+          "Neighbor First Message": "a day ago",
+          "Neighbor Last Update": "28 seconds ago",
+          "Neighbor Port": "mgmt0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ 
