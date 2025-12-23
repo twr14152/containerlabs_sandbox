@@ -3,12 +3,8 @@
 import requests
 import json
 
-
 username = "admin"
 password = "NokiaSrl1!"
-
-
-
 
 def all_nodes():
     nodes = ["leaf1", "leaf2", "spine"]
@@ -70,7 +66,6 @@ def node():
         print(json.dumps(response.json(), indent=2))
     except requests.exceptions.RequestException as e:
         print("Error: ", e)
-
 
 def main():
     ans = input("Log in to all nodes (y/n): ")
