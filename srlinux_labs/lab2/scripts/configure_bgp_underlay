@@ -55,3 +55,149 @@ Connecting to spine
   "jsonrpc": "2.0"
 }
 todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ 
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): n
+Enter node: leaf1
+Enter commands seperated by ',': enter candidate, network-instance default, protocols bgp, autonomous-system 65101, router-id 1.1.1.1, afi-safi ipv4-unicast admin-state enable, afi-safi ipv6-unicast admin-state enable, group spine, commit now
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "text": "All changes have been committed. Leaving candidate mode.\n"
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): n
+Enter node: leaf2
+Enter commands seperated by ',': enter candidate, network-instance default, protocols bgp, autonomous-system 65102, router-id 1.1.1.2, afi-safi ipv4-unicast admin-state enable, afi-safi ipv6-unicast admin-state enable, group spine, commit now
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "text": "All changes have been committed. Leaving candidate mode.\n"
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': network-instance default, info
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "autonomous-system": 65101,
+          "router-id": "1.1.1.1",
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            },
+            {
+              "afi-safi-name": "ipv6-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "spine"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "autonomous-system": 65102,
+          "router-id": "1.1.1.2",
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            },
+            {
+              "afi-safi-name": "ipv6-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "spine"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "autonomous-system": 65201,
+          "router-id": "2.2.2.1",
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            },
+            {
+              "afi-safi-name": "ipv6-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "leaf"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+
+
