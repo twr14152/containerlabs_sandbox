@@ -1,0 +1,124 @@
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': network-instance default, info
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "lo0.0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "lo0.0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "lo0.0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': interface lo0, info
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "name": "lo0",
+      "subinterface": [
+        {
+          "index": 0,
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "1.1.1.1/32"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "name": "lo0",
+      "subinterface": [
+        {
+          "index": 0,
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "1.1.1.2/32"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine
+200
+{
+  "result": [
+    {
+      "name": "lo0",
+      "subinterface": [
+        {
+          "index": 0,
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "2.2.2.1/32"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab2/scripts$ 
