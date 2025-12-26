@@ -2,6 +2,10 @@
 
 import requests
 import json
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 username = "admin"
 password = "NokiaSrl1!"
@@ -11,7 +15,7 @@ def all_nodes():
     commands = input("Enter commands seperated by ',': ")
     cli_commands = commands.split(",")
     for node in nodes:
-        url = f"http://{node}/jsonrpc"
+        url = f"https://{node}/jsonrpc"
         payload = {
                 "jsonrpc": "2.0",
                 "method": "cli",
@@ -39,7 +43,7 @@ def all_nodes():
 
 def node():
     node = input("Enter node: ")
-    url = f"http://{node}/jsonrpc"
+    url = f"https://{node}/jsonrpc"
     
     commands = input("Enter commands seperated by ',': ")
     cli_commands = commands.split(",")
@@ -101,6 +105,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
