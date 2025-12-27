@@ -1,0 +1,22 @@
+ ./scripts/cli_script.py 
+Log in to all nodes (y/n): n
+Enter node: leaf1
+Enter commands seperated by ',': network-instance L3default, info
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "name": "L3default",
+      "type": "ip-vrf",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "irb10.0"
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
