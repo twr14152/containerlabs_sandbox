@@ -33,7 +33,46 @@ Integrated Routing and Bridging (IRB)
           "index": 0,
           "type": "bridged",
           "admin-state": "enable"
-```
+    ```
 
-- You also need to add the interfaces to network-instance default that is mac-vrf
+- You also need to add the interfaces to network-instance default that is mac-vrf (bridging part of the IRB interface)
+```
+    {
+      "name": "default",
+      "type": "mac-vrf",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/10.0"
+        },
+        {
+          "name": "ethernet-1/11.0"
+        },
+        {
+          "name": "ethernet-1/12.0"
+        },
+        {
+          "name": "irb10.0"
+        }
+      ],
+      "bridge-table": {
+        "mac-learning": {
+          "admin-state": "enable"
+        }
+      }
+    }
+```
+- Lastly you need to associate the routing portion to the IRB so you create a new network-instance and associate ip-vrf
+```
+    {
+      "name": "L3default",
+      "type": "ip-vrf",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "irb10.0"
+        }
+      ]
+    }
+
 ```
