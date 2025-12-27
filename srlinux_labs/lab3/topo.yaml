@@ -19,22 +19,22 @@ topology:
     client10:
       kind: linux
       exec:
-        - ip link set address 00:c1:ab:00:00:01 dev eth1
+        - ip link set address 00:c1:ab:00:00:10 dev eth1
         - ip addr add 192.168.101.10/24 dev eth1
     client11:
       kind: linux
       exec:
-        - ip link set address 00:c1:ab:00:00:01 dev eth1
+        - ip link set address 00:c1:ab:00:00:11 dev eth1
         - ip addr add 192.168.101.11/24 dev eth1
     client12:
       kind: linux
       exec:
-        - ip link set address 00:c1:ab:00:00:01 dev eth1
+        - ip link set address 00:c1:ab:00:00:12 dev eth1
         - ip addr add 192.168.101.12/24 dev eth1
     client20:
       kind: linux
       exec:
-        - ip link set address 00:c1:ab:00:00:02 dev eth1
+        - ip link set address 00:c1:ab:00:00:20 dev eth1
         - ip addr add 192.168.102.10/24 dev eth1
 
 
