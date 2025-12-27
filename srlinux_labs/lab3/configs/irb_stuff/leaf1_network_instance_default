@@ -1,0 +1,37 @@
+ ./scripts/cli_script.py 
+Log in to all nodes (y/n): n
+Enter node: leaf1
+Enter commands seperated by ',': network-instance default, info
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "type": "mac-vrf",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/10.0"
+        },
+        {
+          "name": "ethernet-1/11.0"
+        },
+        {
+          "name": "ethernet-1/12.0"
+        },
+        {
+          "name": "irb10.0"
+        }
+      ],
+      "bridge-table": {
+        "mac-learning": {
+          "admin-state": "enable"
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+
