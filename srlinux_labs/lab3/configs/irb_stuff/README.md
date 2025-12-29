@@ -73,15 +73,67 @@ Integrated Routing and Bridging (IRB)
 ```
 - Lastly you need to associate the routing portion to the IRB to network-instance default
 ```
+   Connecting to leaf1
+200
+{
+  "result": [
     {
-      "name": "L3default",
-      "type": "ip-vrf",
+      "name": "default",
+      "type": "default",
       "admin-state": "enable",
       "interface": [
         {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
           "name": "irb10.0"
+        },
+        {
+          "name": "lo0.0"
         }
-      ]
+      ],
+      "protocols": {
+        "bgp": {
+          "admin-state": "enable",
+          "autonomous-system": 65001,
+          "router-id": "1.1.1.1",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": false
+          },
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "spine",
+              "peer-as": 64999,
+              "export-policy": [
+                "advertise-local"
+              ]
+            }
+          ],
+          "neighbor": [
+            {
+              "peer-address": "10.1.1.0",
+              "peer-group": "spine"
+            },
+            {
+              "peer-address": "10.2.1.0",
+              "peer-group": "spine"
+            }
+          ]
+        }
+      }
     }
-
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
 ```
