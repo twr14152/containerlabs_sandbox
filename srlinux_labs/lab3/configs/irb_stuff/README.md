@@ -1,6 +1,6 @@
 Integrated Routing and Bridging (IRB)
 - This was confusing to set up as the sr linux does not have vlan interfaces.
-- Need to use irb and connect it to both the Layer 2 mac-vrf and Layer 3  ip-vrf network-instances 
+- Need to use irb and connect it to both the Layer 2 mac-vrf and Layer 3  ip-vrf network-instances or default network-instance
 - irb interface needs to be created
   ```
    "result": [
@@ -36,7 +36,7 @@ Integrated Routing and Bridging (IRB)
           "admin-state": "enable"
     ```
 
-- You also need to add the interfaces to network-instance default that is mac-vrf (bridging part of the IRB interface)
+- You also need to add the interfaces to network-instance that is mac-vrf (bridging part of the IRB interface)
 ```
     {
       "name": "default",
