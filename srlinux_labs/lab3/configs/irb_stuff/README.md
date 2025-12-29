@@ -38,8 +38,12 @@ Integrated Routing and Bridging (IRB)
 
 - You also need to add the interfaces to network-instance that is mac-vrf (bridging part of the IRB interface)
 ```
+  Connecting to leaf1
+200
+{
+  "result": [
     {
-      "name": "default",
+      "name": "bridging_netwk",
       "type": "mac-vrf",
       "admin-state": "enable",
       "interface": [
@@ -62,8 +66,12 @@ Integrated Routing and Bridging (IRB)
         }
       }
     }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
 ```
-- Lastly you need to associate the routing portion to the IRB so you create a new network-instance and associate ip-vrf
+- Lastly you need to associate the routing portion to the IRB to network-instance default
 ```
     {
       "name": "L3default",
