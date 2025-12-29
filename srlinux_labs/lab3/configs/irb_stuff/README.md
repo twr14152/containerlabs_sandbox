@@ -89,7 +89,7 @@ Integrated Routing and Bridging (IRB)
           "name": "ethernet-1/2.0"
         },
         {
-          "name": "irb10.0"
+          "name": "irb10.0"   <-- This needs added
         },
         {
           "name": "lo0.0"
