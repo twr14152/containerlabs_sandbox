@@ -1,0 +1,245 @@
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3/scripts$ ./cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': info network-instance default
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "type": "default",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
+          "name": "irb10.0"
+        },
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "admin-state": "enable",
+          "autonomous-system": 65001,
+          "router-id": "1.1.1.1",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": false
+          },
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "spine",
+              "peer-as": 64999,
+              "export-policy": [
+                "advertise-local"
+              ]
+            }
+          ],
+          "neighbor": [
+            {
+              "peer-address": "10.1.1.0",
+              "peer-group": "spine"
+            },
+            {
+              "peer-address": "10.2.1.0",
+              "peer-group": "spine"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "type": "default",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
+          "name": "irb10.0"
+        },
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "autonomous-system": 65002,
+          "router-id": "1.1.1.2",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": false
+          },
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "spine",
+              "peer-as": 64999,
+              "export-policy": [
+                "advertise-local"
+              ]
+            }
+          ],
+          "neighbor": [
+            {
+              "peer-address": "10.1.2.0",
+              "peer-group": "spine"
+            },
+            {
+              "peer-address": "10.2.2.0",
+              "peer-group": "spine"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine1
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "autonomous-system": 64999,
+          "router-id": "2.2.2.1",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": false
+          },
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "leaf1",
+              "peer-as": 65001
+            },
+            {
+              "group-name": "leaf2",
+              "peer-as": 65002
+            }
+          ],
+          "neighbor": [
+            {
+              "peer-address": "10.1.1.1",
+              "peer-group": "leaf1"
+            },
+            {
+              "peer-address": "10.1.2.1",
+              "peer-group": "leaf2"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine2
+200
+{
+  "result": [
+    {
+      "name": "default",
+      "interface": [
+        {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "bgp": {
+          "autonomous-system": 64999,
+          "router-id": "2.2.2.2",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": false
+          },
+          "afi-safi": [
+            {
+              "afi-safi-name": "ipv4-unicast",
+              "admin-state": "enable"
+            }
+          ],
+          "group": [
+            {
+              "group-name": "leaf1",
+              "peer-as": 65001
+            },
+            {
+              "group-name": "leaf2",
+              "peer-as": 65002
+            }
+          ],
+          "neighbor": [
+            {
+              "peer-address": "10.2.1.1",
+              "peer-group": "leaf1"
+            },
+            {
+              "peer-address": "10.2.2.1",
+              "peer-group": "leaf2"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
