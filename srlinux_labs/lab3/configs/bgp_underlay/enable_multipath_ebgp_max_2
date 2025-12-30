@@ -1,0 +1,46 @@
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': enter candidate, network-instance default protocols bgp afi-safi ipv4-unicast multipath ebgp maximum-paths 2, commit now
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "text": "All changes have been committed. Leaving candidate mode.\n"
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "text": "All changes have been committed. Leaving candidate mode.\n"
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine1
+200
+{
+  "result": [
+    {
+      "text": "All changes have been committed. Leaving candidate mode.\n"
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine2
+200
+{
+  "result": [
+    {
+      "text": "All changes have been committed. Leaving candidate mode.\n"
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
