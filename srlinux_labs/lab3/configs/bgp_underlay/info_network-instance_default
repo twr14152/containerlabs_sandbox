@@ -1,6 +1,6 @@
 todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
 Log in to all nodes (y/n): y
-Enter commands seperated by ',': info network-instance default 
+Enter commands seperated by ',': info network-instance default
 Connecting to leaf1
 200
 {
@@ -48,6 +48,7 @@ Connecting to leaf1
               "group-name": "spine",
               "peer-as": 64999,
               "export-policy": [
+                "export_net_192.168.101.0/24",
                 "advertise-local"
               ]
             }
@@ -115,6 +116,7 @@ Connecting to leaf2
               "group-name": "spine",
               "peer-as": 64999,
               "export-policy": [
+                "export_net_192.168.102.0/24",
                 "advertise-local"
               ]
             }
@@ -263,3 +265,4 @@ Connecting to spine2
   "id": 1,
   "jsonrpc": "2.0"
 }
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$
