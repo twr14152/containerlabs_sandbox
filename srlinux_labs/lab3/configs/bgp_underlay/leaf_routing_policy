@@ -1,0 +1,130 @@
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': info routing-policy                 
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "prefix-set": [
+        {
+          "name": "net_192.168.101.0/24",
+          "prefix": [
+            {
+              "ip-prefix": "192.168.101.0/24",
+              "mask-length-range": "exact"
+            }
+          ]
+        }
+      ],
+      "policy": [
+        {
+          "name": "advertise-local",
+          "statement": [
+            {
+              "name": "10",
+              "match": {
+                "protocol": "local"
+              },
+              "action": {
+                "policy-result": "accept"
+              }
+            }
+          ]
+        },
+        {
+          "name": "export_net_192.168.101.0/24",
+          "default-action": {
+            "policy-result": "reject"
+          },
+          "statement": [
+            {
+              "name": "10",
+              "match": {
+                "prefix": {
+                  "prefix-set": "net_192.168.101.0/24"
+                }
+              },
+              "action": {
+                "policy-result": "accept"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "prefix-set": [
+        {
+          "name": "net_192.168.102.0/24",
+          "prefix": [
+            {
+              "ip-prefix": "192.168.102.0/24",
+              "mask-length-range": "exact"
+            }
+          ]
+        }
+      ],
+      "policy": [
+        {
+          "name": "advertise-local",
+          "statement": [
+            {
+              "name": "10",
+              "match": {
+                "protocol": "local"
+              },
+              "action": {
+                "policy-result": "accept"
+              }
+            }
+          ]
+        },
+        {
+          "name": "export_net_192.168.102.0/24",
+          "statement": [
+            {
+              "name": "10",
+              "match": {
+                "prefix": {
+                  "prefix-set": "net_192.168.102.0/24"
+                }
+              },
+              "action": {
+                "policy-result": "accept"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine1
+200
+{
+  "result": [
+    {}
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine2
+200
+{
+  "result": [
+    {}
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
