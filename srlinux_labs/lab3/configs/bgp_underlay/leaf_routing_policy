@@ -35,7 +35,7 @@ Connecting to leaf1
         {
           "name": "export_net_192.168.101.0/24",
           "default-action": {
-            "policy-result": "reject"
+            "policy-result": "reject"  <<-- This right here caused me to reorder my routing policy in group spine 1.1.1.1/32 was not being advertised. Had to put adv-local first 
           },
           "statement": [
             {
