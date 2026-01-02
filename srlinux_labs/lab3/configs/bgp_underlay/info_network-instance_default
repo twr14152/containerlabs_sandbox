@@ -20,7 +20,7 @@ Connecting to leaf1
           "name": "irb10.0"
         },
         {
-          "name": "lo0.0"
+          "name": "system0.0"
         }
       ],
       "protocols": {
@@ -48,8 +48,8 @@ Connecting to leaf1
               "group-name": "spine",
               "peer-as": 64999,
               "export-policy": [
-                "export_net_192.168.101.0/24",
-                "advertise-local"
+                "advertise-local",
+                "export_net_192.168.101.0/24"
               ]
             }
           ],
@@ -89,7 +89,7 @@ Connecting to leaf2
           "name": "irb10.0"
         },
         {
-          "name": "lo0.0"
+          "name": "system0.0"
         }
       ],
       "protocols": {
@@ -265,4 +265,3 @@ Connecting to spine2
   "id": 1,
   "jsonrpc": "2.0"
 }
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$
