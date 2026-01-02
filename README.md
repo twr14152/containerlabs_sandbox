@@ -1,5 +1,7 @@
 # containerlabs_sandbox
-- 12.22.2025 - SR Linux 
+- 12.22.2025 - SR Linux
+    - irb
+    - bgp underlay
 - 12.13.2025 - Playing with evpn and vxlan on ceos in ceos_lab/lab4
   - In the lab built out three flavors 
     - static vxlan
