@@ -72,7 +72,7 @@ def node():
     except requests.exceptions.RequestException as e:
         print("Error: ", e)
 
-
+### This cleans up out put for some commands, but not all.
 def clean_response(resp, node_name):
     # Extract the embedded JSON string
     text_blob = resp["result"][0]["text"]
