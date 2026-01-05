@@ -1,0 +1,71 @@
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
+Log in to all nodes (y/n): y
+Enter commands seperated by ',': info tunnel-interface *
+Connecting to leaf1
+200
+{
+  "result": [
+    {
+      "tunnel-interface": [
+        {
+          "name": "vxlan0",
+          "vxlan-interface": [
+            {
+              "index": 1,
+              "type": "bridged",
+              "ingress": {
+                "vni": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to leaf2
+200
+{
+  "result": [
+    {
+      "tunnel-interface": [
+        {
+          "name": "vxlan0",
+          "vxlan-interface": [
+            {
+              "index": 1,
+              "type": "bridged",
+              "ingress": {
+                "vni": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine1
+200
+{
+  "result": [
+    {}
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+Connecting to spine2
+200
+{
+  "result": [
+    {}
+  ],
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+
+
