@@ -1,4 +1,4 @@
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3/configs/l2_evpn$ ./../../scripts/cli_script.py 
 Log in to all nodes (y/n): y
 Enter commands seperated by ',': info network-instance bridging_netwk
 Connecting to leaf1
