@@ -1,4 +1,4 @@
-L2 EVPN
+layer2 evpn
 
 
 
