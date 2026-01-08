@@ -1,6 +1,6 @@
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3/configs/l2_evpn$ ./../../scripts/cli_script.py 
 Log in to all nodes (y/n): y
-Enter commands seperated by ',': info interface *
+Enter commands seperated by ',': info interface * 
 Connecting to leaf1
 200
 {
@@ -121,7 +121,6 @@ Connecting to leaf1
           "subinterface": [
             {
               "index": 0,
-              "admin-state": "enable",
               "ipv4": {
                 "admin-state": "enable",
                 "address": [
@@ -204,7 +203,7 @@ Connecting to leaf2
                 "admin-state": "enable",
                 "address": [
                   {
-                    "ip-prefix": "192.168.102.1/24"
+                    "ip-prefix": "192.168.101.1/24"
                   }
                 ]
               }
@@ -235,7 +234,6 @@ Connecting to leaf2
           "subinterface": [
             {
               "index": 0,
-              "admin-state": "enable",
               "ipv4": {
                 "admin-state": "enable",
                 "address": [
@@ -297,7 +295,6 @@ Connecting to spine1
         },
         {
           "name": "lo0",
-          "admin-state": "enable",
           "subinterface": [
             {
               "index": 0,
