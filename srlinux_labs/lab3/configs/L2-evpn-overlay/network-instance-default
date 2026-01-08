@@ -1,6 +1,6 @@
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3/configs/l2_evpn$ ./../../scripts/cli_script.py 
 Log in to all nodes (y/n): y
-Enter commands seperated by ',': info network-instance default
+Enter commands seperated by ',': info network-instance default	
 Connecting to leaf1
 200
 {
@@ -17,9 +17,6 @@ Connecting to leaf1
           "name": "ethernet-1/2.0"
         },
         {
-          "name": "irb10.0"
-        },
-        {
           "name": "system0.0"
         }
       ],
@@ -34,17 +31,8 @@ Connecting to leaf1
           },
           "afi-safi": [
             {
-              "afi-safi-name": "evpn",
-              "admin-state": "enable"
-            },
-            {
               "afi-safi-name": "ipv4-unicast",
-              "admin-state": "enable",
-              "multipath": {
-                "ebgp": {
-                  "maximum-paths": 2
-                }
-              }
+              "admin-state": "enable"
             }
           ],
           "group": [
@@ -52,8 +40,7 @@ Connecting to leaf1
               "group-name": "spine",
               "peer-as": 64999,
               "export-policy": [
-                "advertise-local",
-                "export_net_192.168.101.0/24"
+                "advertise-local"
               ],
               "afi-safi": [
                 {
@@ -96,9 +83,6 @@ Connecting to leaf2
           "name": "ethernet-1/2.0"
         },
         {
-          "name": "irb10.0"
-        },
-        {
           "name": "system0.0"
         }
       ],
@@ -112,17 +96,8 @@ Connecting to leaf2
           },
           "afi-safi": [
             {
-              "afi-safi-name": "evpn",
-              "admin-state": "enable"
-            },
-            {
               "afi-safi-name": "ipv4-unicast",
-              "admin-state": "enable",
-              "multipath": {
-                "ebgp": {
-                  "maximum-paths": 2
-                }
-              }
+              "admin-state": "enable"
             }
           ],
           "group": [
@@ -130,7 +105,6 @@ Connecting to leaf2
               "group-name": "spine",
               "peer-as": 64999,
               "export-policy": [
-                "export_net_192.168.102.0/24",
                 "advertise-local"
               ],
               "afi-safi": [
@@ -187,24 +161,19 @@ Connecting to spine1
           "afi-safi": [
             {
               "afi-safi-name": "evpn",
-              "admin-state": "enable",
               "evpn": {
                 "inter-as-vpn": true
               }
             },
             {
               "afi-safi-name": "ipv4-unicast",
-              "admin-state": "enable",
-              "multipath": {
-                "ebgp": {
-                  "maximum-paths": 2
-                }
-              }
+              "admin-state": "enable"
             }
           ],
           "group": [
             {
               "group-name": "leaf1",
+              "next-hop-self": false,
               "peer-as": 65001,
               "afi-safi": [
                 {
@@ -215,6 +184,7 @@ Connecting to spine1
             },
             {
               "group-name": "leaf2",
+              "next-hop-self": false,
               "peer-as": 65002,
               "afi-safi": [
                 {
@@ -269,19 +239,13 @@ Connecting to spine2
           "afi-safi": [
             {
               "afi-safi-name": "evpn",
-              "admin-state": "enable",
               "evpn": {
                 "inter-as-vpn": true
               }
             },
             {
               "afi-safi-name": "ipv4-unicast",
-              "admin-state": "enable",
-              "multipath": {
-                "ebgp": {
-                  "maximum-paths": 2
-                }
-              }
+              "admin-state": "enable"
             }
           ],
           "group": [
