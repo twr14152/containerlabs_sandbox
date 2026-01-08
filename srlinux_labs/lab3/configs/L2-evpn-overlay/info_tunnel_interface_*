@@ -1,4 +1,4 @@
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3$ ./scripts/cli_script.py 
+todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/srlinux_labs/lab3/configs/l2_evpn$ ./../../scripts/cli_script.py 
 Log in to all nodes (y/n): y
 Enter commands seperated by ',': info tunnel-interface *
 Connecting to leaf1
@@ -14,7 +14,10 @@ Connecting to leaf1
               "index": 1,
               "type": "bridged",
               "ingress": {
-                "vni": 10
+                "vni": 1010
+              },
+              "egress": {
+                "source-ip": "use-system-ipv4-address"
               }
             }
           ]
@@ -38,7 +41,10 @@ Connecting to leaf2
               "index": 1,
               "type": "bridged",
               "ingress": {
-                "vni": 10
+                "vni": 1010
+              },
+              "egress": {
+                "source-ip": "use-system-ipv4-address"
               }
             }
           ]
@@ -67,5 +73,4 @@ Connecting to spine2
   "id": 1,
   "jsonrpc": "2.0"
 }
-
 
