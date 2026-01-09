@@ -1,4 +1,4 @@
-BGP Underlay notes
+Policy routing stuff
 
 - started advertising loopback0 as the router id in BGP ended up changing this on Leaf1 and leaf2 as the system0.0 would be used for this and for vxlan source IP.
 - I tried having them both use the same address to no avail. So i removed Lo0. As stated the router-id would now come from system0.0 IP. Until I read otherwise.
