@@ -1,4 +1,8 @@
-Notes
+Notes/comments:
+
+Reading the configs is pretty self explanatory. I find working with the show commands to be more tedious.
 
 You will find info on layer 2 evpn in the following folder
 - configs/l2-evpn 
+
+**The other folders at this point are incomplete and potentially incorrect. I'll call out correct solns as I go and will post like the l2-evpn.
