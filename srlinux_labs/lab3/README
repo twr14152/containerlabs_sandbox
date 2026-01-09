@@ -1,6 +1,7 @@
 Notes/comments:
 
-Reading the configs is pretty self explanatory. I find working with the show commands to be more tedious.
+- Reading the configs is pretty self explanatory. 
+- Working with the show commands is more tedious than most NOS because of the way the models are applied to the command structure. 
 
 Completed lab buildouts:
 - Layer 2 evpn setup and info
@@ -11,4 +12,4 @@ Completed lab buildouts:
 
 
 
-**The other folders with in configs folder at this point are incomplete and potentially incorrect. I'll call out correct solns as I go and will post like the l2-evpn.
+**The other folders within configs folder at this point are incomplete and potentially incorrect. I'll call out corrected solns as I go and will post like the l2-evpn.
