@@ -2,8 +2,9 @@ Notes/comments:
 
 Reading the configs is pretty self explanatory. I find working with the show commands to be more tedious.
 
-Layer 2 evpn setup and info
-- configs/l2-evpn 
+Completed lab buildouts:
+- Layer 2 evpn setup and info
+  - configs/l2-evpn 
 
 
 
