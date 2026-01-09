@@ -38,7 +38,13 @@ topology:
       kind: linux
       exec:
         - ip link set address 00:c1:ab:00:00:20 dev eth1
-        - ip addr add 192.168.102.10/24 dev eth1
+        - ip addr add 192.168.101.20/24 dev eth1
+        - ip route add 192.168.102.0/24 via 192.168.101.1
+    client21:
+      kind: linux
+      exec:
+        - ip link set address 00:c1:ab:00:00:21 dev eth1
+        - ip addr add 192.168.102.21/24 dev eth1
         - ip route add 192.168.101.0/24 via 192.168.102.1
 
 
@@ -55,6 +61,6 @@ topology:
     - endpoints: ["client11:eth1", "leaf1:e1-11"]
     - endpoints: ["client12:eth1", "leaf1:e1-12"]
     - endpoints: ["client20:eth1", "leaf2:e1-10"]
-
+    - endpoints: ["client21:eth1", "leaf2:e1-11"]
 
 
