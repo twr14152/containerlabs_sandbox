@@ -1,0 +1,884 @@
+
+# Summary of all EVPN routes:
+A:admin@leaf1# show network-instance default protocols bgp routes evpn route-type summary
+ 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the BGP route table of network-instance "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Status codes: u=used, *=valid, >=best, x=stale, b=backup, w=unused-weight-only
+Origin codes: i=IGP, e=EGP, ?=incomplete
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BGP Router ID: 1.1.1.1      AS: 65001      Local AS: 65001
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Type 2 MAC-IP Advertisement Routes
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+| Statu |     Route-     |  Tag-ID   |   MAC-address   |   IP-address   |    neighbor    | Path- |    Next-Hop    |     Label      |             ESI             |  MAC Mobility  |
+|   s   | distinguisher  |           |                 |                |                |  id   |                |                |                             |                |
++=======+================+===========+=================+================+================+=======+================+================+=============================+================+
+| u*>   | 1.1.1.2:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.1.1.0       | 0     | 1.1.1.2        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 20              |                |                |       |                |                | 00                          |                |
+| *     | 1.1.1.2:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.2.1.0       | 0     | 1.1.1.2        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 20              |                |                |       |                |                | 00                          |                |
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Type 3 Inclusive Multicast Ethernet Tag Routes
++--------+------------------------------------------+------------+---------------------+------------------------------------------+--------+------------------------------------------+
+| Status |           Route-distinguisher            |   Tag-ID   |    Originator-IP    |                 neighbor                 | Path-  |                 Next-Hop                 |
+|        |                                          |            |                     |                                          |   id   |                                          |
++========+==========================================+============+=====================+==========================================+========+==========================================+
+| u*>    | 1.1.1.2:10                               | 0          | 1.1.1.2             | 10.1.1.0                                 | 0      | 1.1.1.2                                  |
+| *      | 1.1.1.2:10                               | 0          | 1.1.1.2             | 10.2.1.0                                 | 0      | 1.1.1.2                                  |
++--------+------------------------------------------+------------+---------------------+------------------------------------------+--------+------------------------------------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0 Ethernet Auto-Discovery routes 0 used, 0 valid, 0 stale
+2 MAC-IP Advertisement routes 1 used, 2 valid, 0 stale
+2 Inclusive Multicast Ethernet Tag routes 1 used, 2 valid, 0 stale
+0 Ethernet Segment routes 0 used, 0 valid, 0 stale
+0 IP Prefix routes 0 used, 0 valid, 0 stale
+0 Selective Multicast Ethernet Tag routes 0 used, 0 valid, 0 stale
+0 Selective Multicast Membership Report Sync routes 0 used, 0 valid, 0 stale
+0 Selective Multicast Leave Sync routes 0 used, 0 valid, 0 stale
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+
+--{ + running }--[  ]--
+A:admin@leaf2# show network-instance default protocols bgp routes evpn route-type summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the BGP route table of network-instance "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Status codes: u=used, *=valid, >=best, x=stale, b=backup, w=unused-weight-only
+Origin codes: i=IGP, e=EGP, ?=incomplete
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BGP Router ID: 1.1.1.2      AS: 65002      Local AS: 65002
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Type 2 MAC-IP Advertisement Routes
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+| Statu |     Route-     |  Tag-ID   |   MAC-address   |   IP-address   |    neighbor    | Path- |    Next-Hop    |     Label      |             ESI             |  MAC Mobility  |
+|   s   | distinguisher  |           |                 |                |                |  id   |                |                |                             |                |
++=======+================+===========+=================+================+================+=======+================+================+=============================+================+
+| u*>   | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.1.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 10              |                |                |       |                |                | 00                          |                |
+| *     | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.2.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 10              |                |                |       |                |                | 00                          |                |
+| u*>   | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.1.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 11              |                |                |       |                |                | 00                          |                |
+| *     | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.2.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 11              |                |                |       |                |                | 00                          |                |
+| u*>   | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.1.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 12              |                |                |       |                |                | 00                          |                |
+| *     | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.2.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 12              |                |                |       |                |                | 00                          |                |
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Type 3 Inclusive Multicast Ethernet Tag Routes
++--------+------------------------------------------+------------+---------------------+------------------------------------------+--------+------------------------------------------+
+| Status |           Route-distinguisher            |   Tag-ID   |    Originator-IP    |                 neighbor                 | Path-  |                 Next-Hop                 |
+|        |                                          |            |                     |                                          |   id   |                                          |
++========+==========================================+============+=====================+==========================================+========+==========================================+
+| u*>    | 1.1.1.1:10                               | 0          | 1.1.1.1             | 10.1.2.0                                 | 0      | 1.1.1.1                                  |
+| *      | 1.1.1.1:10                               | 0          | 1.1.1.1             | 10.2.2.0                                 | 0      | 1.1.1.1                                  |
++--------+------------------------------------------+------------+---------------------+------------------------------------------+--------+------------------------------------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0 Ethernet Auto-Discovery routes 0 used, 0 valid, 0 stale
+6 MAC-IP Advertisement routes 3 used, 6 valid, 0 stale
+2 Inclusive Multicast Ethernet Tag routes 1 used, 2 valid, 0 stale
+0 Ethernet Segment routes 0 used, 0 valid, 0 stale
+0 IP Prefix routes 0 used, 0 valid, 0 stale
+0 Selective Multicast Ethernet Tag routes 0 used, 0 valid, 0 stale
+0 Selective Multicast Membership Report Sync routes 0 used, 0 valid, 0 stale
+0 Selective Multicast Leave Sync routes 0 used, 0 valid, 0 stale
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+
+
+
+
+A:admin@leaf1# show network-instance bridging_netwk bridge-table mac-table all
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Mac-table of network instance bridging_netwk
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------+----------------------------------------------------+------------+----------------+---------+--------+----------------------------------------------------+
+|      Address       |                    Destination                     | Dest Index |      Type      | Active  | Aging  |                    Last Update                     |
++====================+====================================================+============+================+=========+========+====================================================+
+| 00:C1:AB:00:00:10  | ethernet-1/10.0                                    | 3          | learnt         | true    | 92     | 2026-01-08T14:47:49.000Z                           |
+| 00:C1:AB:00:00:11  | ethernet-1/11.0                                    | 4          | learnt         | true    | 92     | 2026-01-09T10:32:42.000Z                           |
+| 00:C1:AB:00:00:12  | ethernet-1/12.0                                    | 5          | learnt         | true    | 273    | 2026-01-09T10:32:46.000Z                           |
+| 00:C1:AB:00:00:20  | vxlan-interface:vxlan0.1 vtep:1.1.1.2 vni:1010     | 1114779517 | evpn           | true    | N/A    | 2026-01-08T14:47:53.000Z                           |
+|                    |                                                    | 72         |                |         |        |                                                    |
++--------------------+----------------------------------------------------+------------+----------------+---------+--------+----------------------------------------------------+
+Total Irb Macs                 :    0 Total    0 Active
+Total Static Macs              :    0 Total    0 Active
+Total Duplicate Macs           :    0 Total    0 Active
+Total Learnt Macs              :    3 Total    3 Active
+Total Evpn Macs                :    1 Total    1 Active
+Total Evpn static Macs         :    0 Total    0 Active
+Total Irb anycast Macs         :    0 Total    0 Active
+Total Proxy Antispoof Macs     :    0 Total    0 Active
+Total Reserved Macs            :    0 Total    0 Active
+Total Eth-cfm Macs             :    0 Total    0 Active
+Total Irb Vrrps                :    0 Total    0 Active
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+
+A:admin@leaf2# show network-instance bridging_netwk bridge-table mac-table all
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Mac-table of network instance bridging_netwk
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------+----------------------------------------------------+------------+----------------+---------+--------+----------------------------------------------------+
+|      Address       |                    Destination                     | Dest Index |      Type      | Active  | Aging  |                    Last Update                     |
++====================+====================================================+============+================+=========+========+====================================================+
+| 00:C1:AB:00:00:10  | vxlan-interface:vxlan0.1 vtep:1.1.1.1 vni:1010     | 1114778703 | evpn           | true    | N/A    | 2026-01-09T10:53:55.000Z                           |
+|                    |                                                    | 44         |                |         |        |                                                    |
+| 00:C1:AB:00:00:11  | vxlan-interface:vxlan0.1 vtep:1.1.1.1 vni:1010     | 1114778703 | evpn           | true    | N/A    | 2026-01-09T10:53:55.000Z                           |
+|                    |                                                    | 44         |                |         |        |                                                    |
+| 00:C1:AB:00:00:12  | vxlan-interface:vxlan0.1 vtep:1.1.1.1 vni:1010     | 1114778703 | evpn           | true    | N/A    | 2026-01-09T10:53:56.000Z                           |
+|                    |                                                    | 44         |                |         |        |                                                    |
+| 00:C1:AB:00:00:20  | ethernet-1/10.0                                    | 3          | learnt         | true    | 286    | 2026-01-09T10:53:58.000Z                           |
++--------------------+----------------------------------------------------+------------+----------------+---------+--------+----------------------------------------------------+
+Total Irb Macs                 :    0 Total    0 Active
+Total Static Macs              :    0 Total    0 Active
+Total Duplicate Macs           :    0 Total    0 Active
+Total Learnt Macs              :    1 Total    1 Active
+Total Evpn Macs                :    3 Total    3 Active
+Total Evpn static Macs         :    0 Total    0 Active
+Total Irb anycast Macs         :    0 Total    0 Active
+Total Proxy Antispoof Macs     :    0 Total    0 Active
+Total Reserved Macs            :    0 Total    0 Active
+Total Eth-cfm Macs             :    0 Total    0 Active
+Total Irb Vrrps                :    0 Total    0 Active
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+
+
+
+A:admin@leaf1# show network-instance bridging_netwk bridge-table mac-table summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Network Instance Bridge Table Summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Network Instance: bridging_netwk
+Irb Macs             :    0 Total    0 Active
+Static Macs          :    0 Total    0 Active
+Duplicate Macs       :    0 Total    0 Active
+Learnt Macs          :    3 Total    3 Active
+Evpn Macs            :    1 Total    1 Active
+Evpn Static Macs     :    0 Total    0 Active
+Irb anycast Macs     :    0 Total    0 Active
+Proxy Antispoof Macs :    0 Total    0 Active
+Reserved Macs        :    0 Total    0 Active
+Eth-cfm Macs         :    0 Total    0 Active
+Irb Vrrp Macs        :    0 Total    0 Active
+Total Macs           :    4 Total    4 Active
+Maximum Entries  : 250
+Warning Threshold: 95% (237)
+Clear Warning    : 90% (225)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total Irb Macs                 :    0 Total    0 Active
+Total Static Macs              :    0 Total    0 Active
+Total Duplicate Macs           :    0 Total    0 Active
+Total Learnt Macs              :    3 Total    3 Active
+Total Evpn Macs                :    1 Total    1 Active
+Total Evpn Static Macs         :    0 Total    0 Active
+Total Irb Anycast Macs         :    0 Total    0 Active
+Total Proxy Antispoof Macs     :    0 Total    0 Active
+Total Reserved Macs            :    0 Total    0 Active
+Total Eth-cfm Macs             :    0 Total    0 Active
+Total Irb Vrrp Macs            :    0 Total    0 Active
+Total Macs                     :    4 Total    4 Active
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+
+A:admin@leaf2# show network-instance bridging_netwk bridge-table mac-table summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Network Instance Bridge Table Summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Network Instance: bridging_netwk
+Irb Macs             :    0 Total    0 Active
+Static Macs          :    0 Total    0 Active
+Duplicate Macs       :    0 Total    0 Active
+Learnt Macs          :    1 Total    1 Active
+Evpn Macs            :    3 Total    3 Active
+Evpn Static Macs     :    0 Total    0 Active
+Irb anycast Macs     :    0 Total    0 Active
+Proxy Antispoof Macs :    0 Total    0 Active
+Reserved Macs        :    0 Total    0 Active
+Eth-cfm Macs         :    0 Total    0 Active
+Irb Vrrp Macs        :    0 Total    0 Active
+Total Macs           :    4 Total    4 Active
+Maximum Entries  : 250
+Warning Threshold: 95% (237)
+Clear Warning    : 90% (225)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total Irb Macs                 :    0 Total    0 Active
+Total Static Macs              :    0 Total    0 Active
+Total Duplicate Macs           :    0 Total    0 Active
+Total Learnt Macs              :    1 Total    1 Active
+Total Evpn Macs                :    3 Total    3 Active
+Total Evpn Static Macs         :    0 Total    0 Active
+Total Irb Anycast Macs         :    0 Total    0 Active
+Total Proxy Antispoof Macs     :    0 Total    0 Active
+Total Reserved Macs            :    0 Total    0 Active
+Total Eth-cfm Macs             :    0 Total    0 Active
+Total Irb Vrrp Macs            :    0 Total    0 Active
+Total Macs                     :    4 Total    4 Active
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+
+
+
+
+A:admin@leaf1# show tunnel-interface vxlan-interface brief
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for vxlan-tunnels 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++------------------+-----------------+---------+-------------+------------------+
+| Tunnel Interface | VxLAN Interface |  Type   | Ingress VNI | Egress source-ip |
++==================+=================+=========+=============+==================+
+| vxlan0           | vxlan0.1        | bridged | 1010        | 1.1.1.1/32       |
++------------------+-----------------+---------+-------------+------------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Summary
+  1 tunnel-interfaces, 1 vxlan interfaces
+  2 vxlan-destinations, 1 unicast, 0 es, 1 multicast, 0 ip
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2# show tunnel-interface vxlan-interface brief
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for vxlan-tunnels 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++------------------+-----------------+---------+-------------+------------------+
+| Tunnel Interface | VxLAN Interface |  Type   | Ingress VNI | Egress source-ip |
++==================+=================+=========+=============+==================+
+| vxlan0           | vxlan0.1        | bridged | 1010        | 1.1.1.2/32       |
++------------------+-----------------+---------+-------------+------------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Summary
+  1 tunnel-interfaces, 1 vxlan interfaces
+  2 vxlan-destinations, 1 unicast, 0 es, 1 multicast, 0 ip
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+
+
+A:admin@leaf1# show tunnel vxlan-tunnel vtep
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for vxlan-tunnels vtep
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VTEP Address: 1.1.1.2
+Index       : 111477951756
+Last Change : 2026-01-08T14:38:17.000Z
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Destinations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++------------------+-----------------+------------+-----------------------+
+| Tunnel Interface | VXLAN Interface | Egress VNI |         Type          |
++==================+=================+============+=======================+
+| vxlan0           | 1               | 1010       | multicast-destination |
+| vxlan0           | 1               | 1010       | unicast-destination   |
++------------------+-----------------+------------+-----------------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2 bridged destinations, 1 multicast, 1 unicast, 0 es
+0 routed destinations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+
+
+A:admin@leaf2# show tunnel vxlan-tunnel vtep
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for vxlan-tunnels vtep
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VTEP Address: 1.1.1.1
+Index       : 111477870325
+Last Change : 2026-01-08T14:38:17.000Z
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Destinations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++------------------+-----------------+------------+-----------------------+
+| Tunnel Interface | VXLAN Interface | Egress VNI |         Type          |
++==================+=================+============+=======================+
+| vxlan0           | 1               | 1010       | multicast-destination |
+| vxlan0           | 1               | 1010       | unicast-destination   |
++------------------+-----------------+------------+-----------------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2 bridged destinations, 1 multicast, 1 unicast, 0 es
+0 routed destinations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+
+
+--{ + running }--[  ]--
+A:admin@leaf1# info from state tunnel-interface vxlan0 vxlan-interface 1
+    type bridged
+    oper-state up
+    ingress {
+        vni 1010
+    }
+    egress {
+        source-ip use-system-ipv4-address
+    }
+    bridge-table {
+        multicast-destinations {
+            multicast-limit {
+                maximum-entries 768
+                current-usage 1
+            }
+            destination 1.1.1.2 vni 1010 {
+                multicast-forwarding BUM
+                destination-index 111477951772
+            }
+        }
+        statistics {
+            active-entries 1
+            total-entries 1
+            failed-entries 0
+            mac-type evpn {
+                active-entries 1
+                total-entries 1
+                failed-entries 0
+            }
+            mac-type evpn-static {
+                active-entries 0
+                total-entries 0
+                failed-entries 0
+            }
+        }
+        unicast-destinations {
+            destination 1.1.1.2 vni 1010 {
+                destination-index 111477951772
+                statistics {
+                    active-entries 1
+                    total-entries 1
+                    failed-entries 0
+                    mac-type evpn {
+                        active-entries 1
+                        total-entries 1
+                        failed-entries 0
+                    }
+                    mac-type evpn-static {
+                        active-entries 0
+                        total-entries 0
+                        failed-entries 0
+                    }
+                }
+                mac-table {
+                    mac 00:C1:AB:00:00:20 {
+                        type evpn
+                        last-update "2026-01-09T10:46:32.000Z (a minute ago)"
+                    }
+                }
+            }
+        }
+    }
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+ --{ + running }--[  ]--
+A:admin@leaf2# info from state tunnel-interface vxlan0 vxlan-interface 1
+    type bridged
+    oper-state up
+    ingress {
+        vni 1010
+    }
+    egress {
+        source-ip use-system-ipv4-address
+    }
+    bridge-table {
+        multicast-destinations {
+            multicast-limit {
+                maximum-entries 768
+                current-usage 1
+            }
+            destination 1.1.1.1 vni 1010 {
+                multicast-forwarding BUM
+                destination-index 111477870344
+            }
+        }
+        statistics {
+            active-entries 3
+            total-entries 3
+            failed-entries 0
+            mac-type evpn {
+                active-entries 3
+                total-entries 3
+                failed-entries 0
+            }
+            mac-type evpn-static {
+                active-entries 0
+                total-entries 0
+                failed-entries 0
+            }
+        }
+        unicast-destinations {
+            destination 1.1.1.1 vni 1010 {
+                destination-index 111477870344
+                statistics {
+                    active-entries 3
+                    total-entries 3
+                    failed-entries 0
+                    mac-type evpn {
+                        active-entries 3
+                        total-entries 3
+                        failed-entries 0
+                    }
+                    mac-type evpn-static {
+                        active-entries 0
+                        total-entries 0
+                        failed-entries 0
+                    }
+                }
+                mac-table {
+                    mac 00:C1:AB:00:00:10 {
+                        type evpn
+                        last-update "2026-01-09T10:53:55.000Z (9 minutes ago)"
+                    }
+                    mac 00:C1:AB:00:00:11 {
+                        type evpn
+                        last-update "2026-01-09T10:53:55.000Z (9 minutes ago)"
+                    }
+                    mac 00:C1:AB:00:00:12 {
+                        type evpn
+                        last-update "2026-01-09T10:53:56.000Z (9 minutes ago)"
+                    }
+                }
+            }
+        }
+    }
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+                                                                                                                                                                               Fri 11:03
+
+                                                                                                                                                                             Fri 10:48
+A:admin@leaf1# show network-instance bridging_netwk protocols bgp-evpn bgp-instance 1
+========================================================================================================================================================================================
+Net Instance   : bridging_netwk
+    bgp Instance 1 is enabled and up
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        VXLAN-Interface   : vxlan0.1
+        evi               : 10
+        ecmp              : 1
+        oper-down-reason  : N/A
+        EVPN Routes
+            Next hop                       : None
+            VLAN Aware Bundle Ethernet tag : None
+            MAC/IP Routes                  : None
+            IMET Routes                    : None, originating-ip None
+========================================================================================================================================================================================
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+
+A:admin@leaf2# show network-instance bridging_netwk protocols bgp-evpn bgp-instance 1
+========================================================================================================================================================================================
+Net Instance   : bridging_netwk
+    bgp Instance 1 is enabled and up
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        VXLAN-Interface   : vxlan0.1
+        evi               : 10
+        ecmp              : 1
+        oper-down-reason  : N/A
+        EVPN Routes
+            Next hop                       : None
+            VLAN Aware Bundle Ethernet tag : None
+            MAC/IP Routes                  : None
+            IMET Routes                    : None, originating-ip None
+========================================================================================================================================================================================
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+
+
+A:admin@leaf1# show network-instance default protocols bgp routes evpn route-type 2 mac-address 00:C1:AB:00:00:20 detail
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the EVPN routes in network-instance  "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Route Distinguisher: 1.1.1.2:10
+Tag-ID             : 0
+MAC address        : 00:C1:AB:00:00:20
+IP Address         : 0.0.0.0
+neighbor           : 10.1.1.0
+path-id            : 0
+Received paths     : 1
+  Path 1: <Best,Valid,Used,>
+    ESI               : 00:00:00:00:00:00:00:00:00:00
+    Label             : 1010
+    Route source      : neighbor 10.1.1.0 (last modified 5m47s ago)
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.2
+    AS Path           :  i [64999, 65002]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+    Invalid Reason    : None
+    Tie Break Reason  : none
+    Route Flap Damping: None
+  Path 1 was advertised to (Modified Attributes): 
+  [ 10.2.1.0 ]
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.2
+    AS Path           :  i [65001, 64999, 65002]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Route Distinguisher: 1.1.1.2:10
+Tag-ID             : 0
+MAC address        : 00:C1:AB:00:00:20
+IP Address         : 0.0.0.0
+neighbor           : 10.2.1.0
+path-id            : 0
+Received paths     : 1
+  Path 1: <Valid,>
+    ESI               : 00:00:00:00:00:00:00:00:00:00
+    Label             : 1010
+    Route source      : neighbor 10.2.1.0 (last modified 5m46s ago)
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.2
+    AS Path           :  i [64999, 65002]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+    Invalid Reason    : None
+    Tie Break Reason  : peer-router-id
+    Route Flap Damping: None
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+
+--{ + running }--[  ]--
+A:admin@leaf1# show network-instance default protocols bgp routes evpn route-type 2 mac-address * summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the BGP route table of network-instance "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Status codes: u=used, *=valid, >=best, x=stale, b=backup, w=unused-weight-only
+Origin codes: i=IGP, e=EGP, ?=incomplete
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BGP Router ID: 1.1.1.1      AS: 65001      Local AS: 65001
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Type 2 MAC-IP Advertisement Routes
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+| Statu |     Route-     |  Tag-ID   |   MAC-address   |   IP-address   |    neighbor    | Path- |    Next-Hop    |     Label      |             ESI             |  MAC Mobility  |
+|   s   | distinguisher  |           |                 |                |                |  id   |                |                |                             |                |
++=======+================+===========+=================+================+================+=======+================+================+=============================+================+
+| u*>   | 1.1.1.2:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.1.1.0       | 0     | 1.1.1.2        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 20              |                |                |       |                |                | 00                          |                |
+| *     | 1.1.1.2:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.2.1.0       | 0     | 1.1.1.2        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 20              |                |                |       |                |                | 00                          |                |
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2 MAC-IP Advertisement routes 1 used, 2 valid, 0 stale
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf1# show network-instance default protocols bgp routes evpn route-type 2 mac-address *
+usage: 2 [rd <value>] [mac-address <value>] [ip-address <value>] [ethernet-tag-id <value>] [neighbor <value>]
+
+MAC-IP Advertisement Routes
+
+Named arguments:
+  ethernet-tag-id
+  ip-address
+  mac-address
+  neighbor
+  rd
+
+Local commands:
+  detail            Show EVPN MAC-IP Advt route detail report
+  summary           Show All EVPN MAC-IP Advt route summary report
+
+*** Not all commands are listed, press '?' again to see all options ***
+
+--{ + running }--[  ]--
+A:admin@leaf1# show network-instance default protocols bgp routes evpn route-type 2 mac-address * detail
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the EVPN routes in network-instance  "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Route Distinguisher: 1.1.1.2:10
+Tag-ID             : 0
+MAC address        : 00:C1:AB:00:00:20
+IP Address         : 0.0.0.0
+neighbor           : 10.1.1.0
+path-id            : 0
+Received paths     : 1
+  Path 1: <Best,Valid,Used,>
+    ESI               : 00:00:00:00:00:00:00:00:00:00
+    Label             : 1010
+    Route source      : neighbor 10.1.1.0 (last modified 14s ago)
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.2
+    AS Path           :  i [64999, 65002]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+    Invalid Reason    : None
+    Tie Break Reason  : none
+    Route Flap Damping: None
+  Path 1 was advertised to (Modified Attributes): 
+  [ 10.2.1.0 ]
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.2
+    AS Path           :  i [65001, 64999, 65002]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Route Distinguisher: 1.1.1.2:10
+Tag-ID             : 0
+MAC address        : 00:C1:AB:00:00:20
+IP Address         : 0.0.0.0
+neighbor           : 10.2.1.0
+path-id            : 0
+Received paths     : 1
+  Path 1: <Valid,>
+    ESI               : 00:00:00:00:00:00:00:00:00:00
+    Label             : 1010
+    Route source      : neighbor 10.2.1.0 (last modified 16s ago)
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.2
+    AS Path           :  i [64999, 65002]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+    Invalid Reason    : None
+    Tie Break Reason  : peer-router-id
+    Route Flap Damping: None
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf1#
+                                                                                                                                                                               Fri 10:54
+--{ + running }--[  ]--
+A:admin@leaf2# show network-instance default protocols bgp routes evpn route-type 2 mac-address 00:C1:AB:00:00:10 summary
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the BGP route table of network-instance "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Status codes: u=used, *=valid, >=best, x=stale, b=backup, w=unused-weight-only
+Origin codes: i=IGP, e=EGP, ?=incomplete
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BGP Router ID: 1.1.1.2      AS: 65002      Local AS: 65002
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Type 2 MAC-IP Advertisement Routes
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+| Statu |     Route-     |  Tag-ID   |   MAC-address   |   IP-address   |    neighbor    | Path- |    Next-Hop    |     Label      |             ESI             |  MAC Mobility  |
+|   s   | distinguisher  |           |                 |                |                |  id   |                |                |                             |                |
++=======+================+===========+=================+================+================+=======+================+================+=============================+================+
+| u*>   | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.1.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 10              |                |                |       |                |                | 00                          |                |
+| *     | 1.1.1.1:10     | 0         | 00:C1:AB:00:00: | 0.0.0.0        | 10.2.2.0       | 0     | 1.1.1.1        | 1010           | 00:00:00:00:00:00:00:00:00: | -              |
+|       |                |           | 10              |                |                |       |                |                | 00                          |                |
++-------+----------------+-----------+-----------------+----------------+----------------+-------+----------------+----------------+-----------------------------+----------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2 MAC-IP Advertisement routes 1 used, 2 valid, 0 stale
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2# show network-instance default protocols bgp routes evpn route-type 2 mac-address 00:C1:AB:00:00:10 detail
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Show report for the EVPN routes in network-instance  "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Route Distinguisher: 1.1.1.1:10
+Tag-ID             : 0
+MAC address        : 00:C1:AB:00:00:10
+IP Address         : 0.0.0.0
+neighbor           : 10.1.2.0
+path-id            : 0
+Received paths     : 1
+  Path 1: <Best,Valid,Used,>
+    ESI               : 00:00:00:00:00:00:00:00:00:00
+    Label             : 1010
+    Route source      : neighbor 10.1.2.0 (last modified 10m47s ago)
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.1
+    AS Path           :  i [64999, 65001]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+    Invalid Reason    : None
+    Tie Break Reason  : none
+    Route Flap Damping: None
+  Path 1 was advertised to (Modified Attributes): 
+  [ 10.2.2.0 ]
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.1
+    AS Path           :  i [65002, 64999, 65001]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Route Distinguisher: 1.1.1.1:10
+Tag-ID             : 0
+MAC address        : 00:C1:AB:00:00:10
+IP Address         : 0.0.0.0
+neighbor           : 10.2.2.0
+path-id            : 0
+Received paths     : 1
+  Path 1: <Valid,>
+    ESI               : 00:00:00:00:00:00:00:00:00:00
+    Label             : 1010
+    Route source      : neighbor 10.2.2.0 (last modified 10m46s ago)
+    Route preference  : No MED, No LocalPref
+    Atomic Aggr       : false
+    BGP next-hop      : 1.1.1.1
+    AS Path           :  i [64999, 65001]
+    Communities       : [target:65000:10, bgp-tunnel-encap:VXLAN]
+    RR Attributes     : No Originator-ID, Cluster-List is []
+    Aggregation       : None
+    Unknown Attr      : None
+    Invalid Reason    : None
+    Tie Break Reason  : peer-router-id
+    Route Flap Damping: None
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--{ + running }--[  ]--
+A:admin@leaf2#
+                                                                                                                                                                               Fri 11:04
+
+
+
+
+
+[*]─[client20]─[/]
+└──> cat test_script.sh 
+#!/bin/bash
+
+ping -c 5 192.168.101.10
+ping -c 5 192.168.101.11
+ping -c 5 192.168.101.12 
+ping -c 5 192.168.101.20 
+
+
+[*]─[client20]─[/]
+└──> ./test_script.sh 
+PING 192.168.101.10 (192.168.101.10) 56(84) bytes of data.
+64 bytes from 192.168.101.10: icmp_seq=1 ttl=64 time=0.860 ms
+64 bytes from 192.168.101.10: icmp_seq=2 ttl=64 time=0.682 ms
+64 bytes from 192.168.101.10: icmp_seq=3 ttl=64 time=0.698 ms
+64 bytes from 192.168.101.10: icmp_seq=4 ttl=64 time=0.649 ms
+64 bytes from 192.168.101.10: icmp_seq=5 ttl=64 time=0.647 ms
+
+--- 192.168.101.10 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4109ms
+rtt min/avg/max/mdev = 0.647/0.707/0.860/0.078 ms
+PING 192.168.101.11 (192.168.101.11) 56(84) bytes of data.
+64 bytes from 192.168.101.11: icmp_seq=1 ttl=64 time=1.49 ms
+64 bytes from 192.168.101.11: icmp_seq=2 ttl=64 time=0.603 ms
+64 bytes from 192.168.101.11: icmp_seq=3 ttl=64 time=0.654 ms
+64 bytes from 192.168.101.11: icmp_seq=4 ttl=64 time=0.606 ms
+64 bytes from 192.168.101.11: icmp_seq=5 ttl=64 time=0.645 ms
+
+--- 192.168.101.11 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4093ms
+rtt min/avg/max/mdev = 0.603/0.798/1.486/0.344 ms
+PING 192.168.101.12 (192.168.101.12) 56(84) bytes of data.
+64 bytes from 192.168.101.12: icmp_seq=1 ttl=64 time=1.57 ms
+64 bytes from 192.168.101.12: icmp_seq=2 ttl=64 time=0.740 ms
+64 bytes from 192.168.101.12: icmp_seq=3 ttl=64 time=0.644 ms
+64 bytes from 192.168.101.12: icmp_seq=4 ttl=64 time=0.639 ms
+64 bytes from 192.168.101.12: icmp_seq=5 ttl=64 time=0.654 ms
+
+--- 192.168.101.12 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4093ms
+rtt min/avg/max/mdev = 0.639/0.850/1.573/0.363 ms
+PING 192.168.101.20 (192.168.101.20) 56(84) bytes of data.
+64 bytes from 192.168.101.20: icmp_seq=1 ttl=64 time=0.074 ms
+64 bytes from 192.168.101.20: icmp_seq=2 ttl=64 time=0.039 ms
+64 bytes from 192.168.101.20: icmp_seq=3 ttl=64 time=0.037 ms
+64 bytes from 192.168.101.20: icmp_seq=4 ttl=64 time=0.054 ms
+64 bytes from 192.168.101.20: icmp_seq=5 ttl=64 time=0.035 ms
+
+--- 192.168.101.20 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4093ms
+rtt min/avg/max/mdev = 0.035/0.047/0.074/0.014 ms
+
+[*]─[client20]─[/]
+└──> 
+
+[*]─[client10]─[/]
+└──> cat test_script.sh 
+#!/bin/bash
+
+ping -c 5 192.168.101.10
+ping -c 5 192.168.101.11
+ping -c 5 192.168.101.12 
+ping -c 5 192.168.101.20 
+
+[*]─[client10]─[/]
+└──> ./test_script.sh 
+PING 192.168.101.10 (192.168.101.10) 56(84) bytes of data.
+64 bytes from 192.168.101.10: icmp_seq=1 ttl=64 time=0.051 ms
+64 bytes from 192.168.101.10: icmp_seq=2 ttl=64 time=0.042 ms
+64 bytes from 192.168.101.10: icmp_seq=3 ttl=64 time=0.036 ms
+64 bytes from 192.168.101.10: icmp_seq=4 ttl=64 time=0.038 ms
+64 bytes from 192.168.101.10: icmp_seq=5 ttl=64 time=0.059 ms
+
+--- 192.168.101.10 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4112ms
+rtt min/avg/max/mdev = 0.036/0.045/0.059/0.008 ms
+PING 192.168.101.11 (192.168.101.11) 56(84) bytes of data.
+64 bytes from 192.168.101.11: icmp_seq=1 ttl=64 time=0.669 ms
+64 bytes from 192.168.101.11: icmp_seq=2 ttl=64 time=0.261 ms
+64 bytes from 192.168.101.11: icmp_seq=3 ttl=64 time=0.261 ms
+64 bytes from 192.168.101.11: icmp_seq=4 ttl=64 time=0.295 ms
+64 bytes from 192.168.101.11: icmp_seq=5 ttl=64 time=0.220 ms
+
+--- 192.168.101.11 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4095ms
+rtt min/avg/max/mdev = 0.220/0.341/0.669/0.165 ms
+PING 192.168.101.12 (192.168.101.12) 56(84) bytes of data.
+64 bytes from 192.168.101.12: icmp_seq=1 ttl=64 time=0.555 ms
+64 bytes from 192.168.101.12: icmp_seq=2 ttl=64 time=0.235 ms
+64 bytes from 192.168.101.12: icmp_seq=3 ttl=64 time=0.245 ms
+64 bytes from 192.168.101.12: icmp_seq=4 ttl=64 time=0.326 ms
+64 bytes from 192.168.101.12: icmp_seq=5 ttl=64 time=0.252 ms
+
+--- 192.168.101.12 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4094ms
+rtt min/avg/max/mdev = 0.235/0.322/0.555/0.120 ms
+PING 192.168.101.20 (192.168.101.20) 56(84) bytes of data.
+64 bytes from 192.168.101.20: icmp_seq=1 ttl=64 time=1.48 ms
+64 bytes from 192.168.101.20: icmp_seq=2 ttl=64 time=0.653 ms
+64 bytes from 192.168.101.20: icmp_seq=3 ttl=64 time=0.647 ms
+64 bytes from 192.168.101.20: icmp_seq=4 ttl=64 time=0.728 ms
+64 bytes from 192.168.101.20: icmp_seq=5 ttl=64 time=0.709 ms
+
+--- 192.168.101.20 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4093ms
+rtt min/avg/max/mdev = 0.647/0.843/1.481/0.320 ms
+
+[*]─[client10]─[/]
+└──> 
+
