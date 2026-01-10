@@ -1,6 +1,7 @@
 # containerlabs_sandbox
+
 - 01.09.2026 - SR Linux l2-evpn completed
-    - 
+    - srlinux_labs/lab3/configs/L2-evpn
 - 12.22.2025 - SR Linux
     - irb
     - bgp underlay
