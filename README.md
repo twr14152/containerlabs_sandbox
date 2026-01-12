@@ -2,14 +2,17 @@
 
 - 01.09.2026 - SR Linux l2-evpn completed
     - srlinux_labs/lab3/configs/L2-evpn
-- 12.13.2025 - Playing with evpn and vxlan on ceos in ceos_lab/lab4
-  - In the lab built out three flavors 
+- 12.13.2025 - Playing with evpn and vxlan on ceos in ceos_lab/lab4 (2spine/3leaf)
+  - Three flavors: 
     - static vxlan
     - ospf/bgp evpn  
     - bgp/bgp evpn
+  - MLAG between leaf1a/b
   - Configs for these solutions can be found in the lab4/scripts/conf_bkup
+
+
 - This repo will store store some labs as I mess around with this tool.
-- Apple silicon has required me to go down this path. 
+- Apple silicon has required me to go down this path. Now I'm glad it did. 
 - So far using srlinux, cEOS and FRR, (all freely available)
 - With in couple of hours I've figured out how to use FRR in the way I was hoping to use cEOS.
 - After some digging I found I was making too difficult to ssh into cEOS containerlab has that working out of the gates
