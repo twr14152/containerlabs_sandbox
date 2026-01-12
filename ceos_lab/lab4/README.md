@@ -1,5 +1,7 @@
 # cEOS (2)Spine/(3)Leaf lab
 
+All of these configurations REQUIRE that the MLAG as well as the lan interfaces to the hosts be set up prior to trying to buildout of these evpn solutions. The scripts and configlets to do so are provided in the scripts section. You use them with the run_cmds script.
+
 Testing
 - ospf/bgp evpn - updated 12.14.2025
   - pings worked between h1 h2 and h3 (required flood list)
