@@ -1,0 +1,706 @@
+toddriemenschneider@clab:~/cloned_repo/containerlabs_sandbox/ceos_lab/lab4/scripts$ ./run_cmds.py 
+Do you want to connect to all hosts?..(y/n):n
+Enter host or hostnames separated by ',': leaf1a, leaf1b, leaf2
+Do you have a config or cmds file to load (y/n): n
+Enter commands to run seperated by ",": show bgp evpn
+Connected to leaf1a..
+{
+  "jsonrpc": "2.0",
+  "id": "1",
+  "result": [
+    {
+      "vrf": "default",
+      "routerId": "1.1.1.1",
+      "asn": 65001,
+      "evpnRoutes": {
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0010": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0010",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0011": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0011",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0012": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0012",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.103",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65002 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.101": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.101",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.103": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.103",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.103",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65002 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+Closing connection to leaf1a...
+
+
+Connected to leaf1b..
+{
+  "jsonrpc": "2.0",
+  "id": "1",
+  "result": [
+    {
+      "vrf": "default",
+      "routerId": "1.1.1.2",
+      "asn": 65001,
+      "evpnRoutes": {
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0010": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0010",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0011": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0011",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0012": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0012",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.103",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65002 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.102": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.102",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.103": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.103",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.103",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65002 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+Closing connection to leaf1b...
+
+
+Connected to leaf2..
+{
+  "jsonrpc": "2.0",
+  "id": "1",
+  "result": [
+    {
+      "vrf": "default",
+      "routerId": "1.1.1.3",
+      "asn": 65002,
+      "evpnRoutes": {
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0010": {
+          "totalPaths": 2,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0010",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.101",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65001 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            },
+            {
+              "nextHop": "1.1.1.102",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65001 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": false,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0011": {
+          "totalPaths": 2,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0011",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.101",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65001 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            },
+            {
+              "nextHop": "1.1.1.102",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65001 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": false,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 mac-ip 20020 00c1.ab00.0012": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "mac": "00c1.ab00.0012",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "mac-ip"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.101": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.101",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.101",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65001 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.102": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.102",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "1.1.1.102",
+              "asPathEntry": {
+                "asPathType": "External",
+                "asPath": "65000 65001 i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "localPreference": 100,
+              "weight": 0
+            }
+          ]
+        },
+        "RD: 65000:20020 imet 20020 1.1.1.103": {
+          "totalPaths": 1,
+          "routeKeyDetail": {
+            "eti": 20020,
+            "ipGenAddr": "1.1.1.103",
+            "domain": "local",
+            "rd": "65000:20020",
+            "nlriType": "imet"
+          },
+          "evpnRoutePaths": [
+            {
+              "nextHop": "",
+              "asPathEntry": {
+                "asPathType": "Local",
+                "asPath": "i"
+              },
+              "reasonNotBestpath": "noReason",
+              "routeType": {
+                "active": true,
+                "atomicAggregator": false,
+                "backup": false,
+                "ecmp": false,
+                "ecmpContributor": false,
+                "ecmpHead": false,
+                "localAgg": false,
+                "origin": "Igp",
+                "queued": false,
+                "stale": false,
+                "suppressed": false,
+                "valid": true,
+                "waitForConvergence": false,
+                "unknownMetric": false
+              },
+              "weight": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+Closing connection to leaf2...
