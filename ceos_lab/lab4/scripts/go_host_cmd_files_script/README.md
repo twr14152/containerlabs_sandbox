@@ -1,7 +1,8 @@
 ### How to use the script
 
+
 ```
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/ceos_lab/lab4/scripts/go_host_cmd_files_script$ ./run_cmds hostfile.txt admin admin
+$ ./run_cmds hostfile.txt admin admin
 hosts: [leaf1a leaf1b leaf2 spine1 spine2]
 leaf1a.cfg
 [enable configure interface loopback69  description leaf1a   show interfaces loopback 69]
@@ -167,5 +168,5 @@ spine2.cfg
     {}
   ]
 }
-todd@todd-TOSHIBA-DX735:~/Code_folder/containerlab/containerlabs_sandbox/ceos_lab/lab4/scripts/go_host_cmd_files_script$ 
+$ 
 ```
