@@ -1,5 +1,6 @@
 ### How to use the script
 
+if you dont want to compile the code use **"go run main.go hostfile.txt admin admin"** otherwise:
 
 ```
 $ ./run_cmds hostfile.txt admin admin
