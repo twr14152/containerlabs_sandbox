@@ -1,6 +1,8 @@
 ### Build AI assisted Network Controller
 
-This will be a phased build out.
+This will be a phased build out. 
+
+Goal is to use AI to translate cli output to controller. No yaml no json and certainly ***no yang***....
 
 Current network is (2)spine(3)leaf network with three hosts one of each leaf.
 The network is evpn/vxlan buildout.
