@@ -555,3 +555,319 @@ Nodes with errors: 0
 
 
 ----------------------------------------------
+Update - Added bgp to status change, 'show ip bgp summary', as well as the health to internal directory structure.
+- Required updates to:
+	- cmd/controller/main.go
+	- interneral/collector/collector.go
+	- normalize/bgp.go
+	- health/bgp.go <-- new folder and file
+
+```
+$ tree
+.
+├── cmd
+│   └── controller
+│       ├── controller
+│       ├── main.go
+│       └── version_1_main.go <-- depricated main.go
+├── go.mod
+├── internal
+│   ├── collector
+│   │   └── collector.go
+│   ├── health
+│   │   └── bgp.go
+│   ├── inventory
+│   │   └── nodes.go
+│   ├── normalize
+│   │   ├── bgp.go
+│   │   └── interfaces.go
+│   └── transport
+│       └── eapi
+│           └── client.go
+└── README.md
+
+10 directories, 11 files
+
+```
+cmd/controller/main.go
+
+main.go
+```
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"controller/internal/collector"
+	"controller/internal/inventory"
+	"controller/internal/normalize"
+	"controller/internal/health"
+)
+
+func main() {
+	nodes := inventory.Nodes
+	totalNodes := len(nodes)
+	nodesWithIntfErrors := 0
+
+	fmt.Printf("Nodes checked: %d\n", totalNodes)
+
+	for _, node := range nodes {
+		fmt.Printf("\n%s (%s)\n", node.Name, node.MgmtIP)
+
+		// -------------------------------
+		// Collect interface stats
+		// -------------------------------
+		ifStats, err := collector.CollectInterfaceStats(node.MgmtIP)
+		if err != nil {
+			log.Printf("%s - failed to collect interface stats: %v\n", node.Name, err)
+			continue
+		}
+
+		nodeHasIntfErrors := false
+		for _, intf := range ifStats {
+			if intf.RxErr > 0 || intf.TxErr > 0 {
+				fmt.Printf("  %s rxErr=%d txErr=%d <-- ERROR\n", intf.Name, intf.RxErr, intf.TxErr)
+				nodeHasIntfErrors = true
+			} else {
+				fmt.Printf("  %s rxErr=%d txErr=%d\n", intf.Name, intf.RxErr, intf.TxErr)
+			}
+		}
+		if nodeHasIntfErrors {
+			nodesWithIntfErrors++
+		}
+
+		// -------------------------------
+		// Collect BGP summary
+		// -------------------------------
+		rawSamples, err := collector.CollectInterfaceCounters(node)
+		if err != nil {
+			log.Printf("%s - failed to collect BGP summary: %v\n", node.Name, err)
+			continue
+		}
+
+		for _, sample := range rawSamples {
+			if sample.Command != "show ip bgp summary" {
+				continue
+			}
+
+			peers, err := normalize.ParseBGPSummary(sample.Node, sample.Payload, sample.Timestamp)
+			if err != nil {
+				log.Printf("%s - failed to parse BGP summary: %v\n", node.Name, err)
+				continue
+			}
+
+			// Print BGP peers
+			for _, p := range peers {
+				fmt.Printf(
+					"  BGP neighbor=%s vrf=%s state=%s prefixes=%d uptime=%ds\n",
+					p.Neighbor,
+					p.VRF,
+					p.State,
+					p.PrefixesRx,
+					p.UptimeSec,
+				)
+			}
+
+			// Evaluate BGP health
+			nodeHealth := health.EvaluateBGPPeers(peers)
+			fmt.Printf(
+				"  --> BGP health: %s (%d/%d peers established)\n",
+				nodeHealth.Status,
+				nodeHealth.Established,
+				nodeHealth.TotalPeers,
+			)
+		}
+	}
+
+	// -------------------------------
+	// Print summary
+	// -------------------------------
+	fmt.Println("\nSummary")
+	fmt.Println("-------")
+	fmt.Printf("Nodes checked: %d\n", totalNodes)
+	fmt.Printf("Nodes with interface errors: %d\n", nodesWithIntfErrors)
+}
+
+```
+internal/collector/collector.go
+
+collector.go
+```
+package collector
+
+import (
+	"encoding/json"
+	"time"
+
+	"controller/internal/inventory"
+	"controller/internal/transport/eapi"
+)
+
+type RawSample struct {
+	Node      string
+	Command   string
+	Payload   json.RawMessage
+	Timestamp time.Time
+}
+
+type InterfaceStats struct {
+	Name  string
+	RxErr int
+	TxErr int
+}
+
+// CollectInterfaceStats connects to the device and returns the interface stats.
+// Replace this stub with your actual eAPI call.
+func CollectInterfaceStats(host string) ([]InterfaceStats, error) {
+	// TODO: replace with real eAPI logic
+	return []InterfaceStats{
+		{Name: "Ethernet10", RxErr: 0, TxErr: 0},
+		{Name: "Ethernet47", RxErr: 0, TxErr: 0},
+	}, nil
+}
+
+func CollectInterfaceCounters(node inventory.Node) ([]RawSample, error) {
+	client := eapi.New(node.MgmtIP, node.Username, node.Password)
+
+	results, err := client.RunCmds([]string{
+		"show interfaces counters", "show ip bgp summary",
+	})
+	if err != nil {
+		return nil, err
+	}
+	samples := []RawSample{
+		{
+			Node:      node.Name,
+			Command:   "show interfaces counters",
+			Payload:   results[0],
+			Timestamp: time.Now(),
+		},
+		{
+			Node:      node.Name,
+			Command:   "show ip bgp summary",
+			Payload:   results[1],
+			Timestamp: time.Now(),
+		},
+	}
+
+	return samples, nil
+
+}
+```
+internal/health/bgp.go
+bgp.go
+```
+package health
+
+import (
+	"controller/internal/normalize"
+)
+
+type NodeBGPHealth struct {
+	Node        string
+	TotalPeers  int
+	Established int
+	Down        int
+	Status      string // "OK", "WARNING", "CRITICAL"
+}
+
+// EvaluateBGPPeers checks the BGP peers and returns a summary
+func EvaluateBGPPeers(peers []normalize.BGPPeer) NodeBGPHealth {
+	health := NodeBGPHealth{
+		TotalPeers: len(peers),
+		Node:       "",
+	}
+
+	for _, p := range peers {
+		health.Node = p.Node
+		if p.State == "Established" {
+			health.Established++
+		} else {
+			health.Down++
+		}
+	}
+
+	// Simple health logic:
+	switch {
+	case health.Established == health.TotalPeers:
+		health.Status = "OK"
+	case health.Established > 0:
+		health.Status = "WARNING"
+	default:
+		health.Status = "CRITICAL"
+	}
+
+	return health
+}
+
+
+```
+
+internal/normalize/bgp.go
+bgp.go
+```
+package normalize
+
+import (
+	"encoding/json"
+	"time"
+)
+
+type BGPPeer struct {
+	Node        string
+	VRF         string
+	Neighbor    string // IP or DNS name
+	ASN         string
+	State       string
+	PrefixesRx  int
+	UptimeSec   int
+	Timestamp   time.Time
+}
+
+func ParseBGPSummary(
+	node string,
+	payload json.RawMessage,
+	ts time.Time,
+) ([]BGPPeer, error) {
+
+	var parsed struct {
+		VRFs map[string]struct {
+			Peers map[string]struct {
+				ASN             string `json:"asn"`
+				PeerState       string `json:"peerState"`
+				PrefixesRx      int    `json:"prefixReceived"`
+				UpDownTime      float64    `json:"upDownTime"`
+			} `json:"peers"`
+		} `json:"vrfs"`
+	}
+
+	if err := json.Unmarshal(payload, &parsed); err != nil {
+		return nil, err
+	}
+
+	peers := []BGPPeer{}
+
+	for vrf, vrfData := range parsed.VRFs {
+		for neighbor, data := range vrfData.Peers {
+			peers = append(peers, BGPPeer{
+				Node:       node,
+				VRF:        vrf,
+				Neighbor:   neighbor, // IP or DNS, we don't care
+				ASN:        data.ASN,
+				State:      data.PeerState,
+				PrefixesRx: data.PrefixesRx,
+				UptimeSec:  int(data.UpDownTime),
+				Timestamp:  ts,
+			})
+		}
+	}
+
+	return peers, nil
+}
+
+```
+
+
+
+
