@@ -867,7 +867,58 @@ func ParseBGPSummary(
 }
 
 ```
+Run script
+```
+$ go run cmd/controller/main.go 
+Nodes checked: 5
 
+leaf1a (10.0.0.4)
+  Ethernet10 rxErr=0 txErr=0
+  Ethernet47 rxErr=0 txErr=0
+  BGP neighbor=10.1.0.0 vrf=default state=Established prefixes=3 uptime=1770401386s
+  BGP neighbor=100.100.100.1 vrf=default state=Established prefixes=3 uptime=1770401388s
+  --> BGP health: OK (2/2 peers established)
+
+leaf1b (10.0.0.5)
+  Ethernet10 rxErr=0 txErr=0
+  Ethernet47 rxErr=0 txErr=0
+  BGP neighbor=10.1.0.2 vrf=default state=Established prefixes=3 uptime=1770401552s
+  BGP neighbor=100.100.100.2 vrf=default state=Established prefixes=3 uptime=1770401555s
+  --> BGP health: OK (2/2 peers established)
+
+leaf2 (10.0.0.6)
+  Ethernet10 rxErr=0 txErr=0
+  Ethernet47 rxErr=0 txErr=0
+  BGP neighbor=10.1.0.4 vrf=default state=Established prefixes=3 uptime=1770401289s
+  BGP neighbor=10.1.0.6 vrf=default state=Established prefixes=3 uptime=1770401289s
+  BGP neighbor=100.100.100.1 vrf=default state=Established prefixes=3 uptime=1770401290s
+  BGP neighbor=100.100.100.2 vrf=default state=Established prefixes=3 uptime=1770401290s
+  --> BGP health: OK (4/4 peers established)
+
+spine1 (10.0.0.2)
+  Ethernet10 rxErr=0 txErr=0
+  Ethernet47 rxErr=0 txErr=0
+  BGP neighbor=1.1.1.3 vrf=default state=Established prefixes=2 uptime=1770401290s
+  BGP neighbor=10.1.0.1 vrf=default state=Established prefixes=2 uptime=1770401386s
+  BGP neighbor=10.1.0.5 vrf=default state=Established prefixes=2 uptime=1770401289s
+  BGP neighbor=1.1.1.1 vrf=default state=Established prefixes=2 uptime=1770401388s
+  --> BGP health: OK (4/4 peers established)
+
+spine2 (10.0.0.3)
+  Ethernet10 rxErr=0 txErr=0
+  Ethernet47 rxErr=0 txErr=0
+  BGP neighbor=1.1.1.2 vrf=default state=Established prefixes=2 uptime=1770401555s
+  BGP neighbor=1.1.1.3 vrf=default state=Established prefixes=2 uptime=1770401290s
+  BGP neighbor=10.1.0.3 vrf=default state=Established prefixes=2 uptime=1770401552s
+  BGP neighbor=10.1.0.7 vrf=default state=Established prefixes=2 uptime=1770401289s
+  --> BGP health: OK (4/4 peers established)
+
+Summary
+-------
+Nodes checked: 5
+Nodes with interface errors: 0
+
+```
 
 
 
