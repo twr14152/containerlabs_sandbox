@@ -589,9 +589,9 @@ $ tree
 10 directories, 11 files
 
 ```
-cmd/controller/main.go
+- cmd/controller/main.go
 
-main.go
+	- main.go
 ```
 package main
 
@@ -690,9 +690,9 @@ func main() {
 }
 
 ```
-internal/collector/collector.go
+- internal/collector/collector.go
 
-collector.go
+	- collector.go
 ```
 package collector
 
@@ -755,8 +755,8 @@ func CollectInterfaceCounters(node inventory.Node) ([]RawSample, error) {
 
 }
 ```
-internal/health/bgp.go
-bgp.go
+- internal/health/bgp.go
+	- bgp.go
 ```
 package health
 
@@ -804,8 +804,8 @@ func EvaluateBGPPeers(peers []normalize.BGPPeer) NodeBGPHealth {
 
 ```
 
-internal/normalize/bgp.go
-bgp.go
+- internal/normalize/bgp.go
+	- bgp.go
 ```
 package normalize
 
