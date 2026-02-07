@@ -2,11 +2,13 @@
 
 Will work on as time permits.........
 
+Thoughts of flow
+
 - device ---> (ai agent)----> controller ----> (Reports with Cli logic) ----> Network Engineer
 - device <------------------- controller <---- (Cli)<-------------------------Network Engineer
 
 
-Issue: at this point I am trying to understand how to build a network controller. AI is next.
+Issue: at this point I am trying to understand how to build a network controller. Incorporating AI next.
 
 Goal is to use AI to translate cli output to controller. Goal is to allow network engineers to continue to use Cli and keep the Cli mental model.
 No yaml no json and certainly ***no yang***.... To do this the thought is that ai agent could be inserted between the device and the controller and use 
