@@ -1181,5 +1181,29 @@ Nodes checked: 5
 Nodes with interface errors: 0
 
 ```
-
-
+Current Project tree
+```
+.
+├── cmd
+│   └── controller
+│       ├── controller
+│       ├── main.go
+│       └── version_1_main.go
+├── go.mod
+├── internal
+│   ├── collector
+│   │   └── collector.go
+│   ├── health
+│   │   └── bgp.go
+│   ├── inventory
+│   │   └── nodes.go
+│   ├── normalize
+│   │   ├── bgp.go
+│   │   └── interfaces.go
+│   ├── state
+│   │   └── network.go
+│   └── transport
+│       └── eapi
+│           └── client.go
+└── README.md
+```
