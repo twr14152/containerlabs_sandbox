@@ -1,4 +1,4 @@
-### Build AI assisted Network Controller
+### Build Network Controller
 
 Will work on as time permits.........
 
