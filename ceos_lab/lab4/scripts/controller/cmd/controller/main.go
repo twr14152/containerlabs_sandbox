@@ -45,7 +45,7 @@ func main() {
 		// -------------------------------
 		// Collect BGP summary
 		// -------------------------------
-		rawSamples, err := collector.CollectInterfaceCounters(node)
+		rawSamples, err := collector.CollectOperationalState(node)
 		if err != nil {
 			log.Printf("%s - failed to collect BGP summary: %v\n", node.Name, err)
 			continue
