@@ -1,5 +1,9 @@
 # cEOS (2)Spine/(3)Leaf lab
 
+Update 02/06/2026
+- Working on network controller
+  - lab4/scripts/controller 
+
 All of these configurations REQUIRE that the MLAG as well as the lan interfaces to the hosts be set up prior to trying to buildout of these evpn solutions. The scripts and configlets to do so are provided in the scripts section. You use them with the run_cmds script.
 
 Testing
