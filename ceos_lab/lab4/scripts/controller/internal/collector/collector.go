@@ -31,11 +31,12 @@ func CollectInterfaceStats(host string) ([]InterfaceStats, error) {
 	}, nil
 }
 
-func CollectInterfaceCounters(node inventory.Node) ([]RawSample, error) {
+func CollectOperationalState(node inventory.Node) ([]RawSample, error) {
 	client := eapi.New(node.MgmtIP, node.Username, node.Password)
 
 	results, err := client.RunCmds([]string{
-		"show interfaces counters", "show ip bgp summary",
+		"show interfaces counters", 
+		"show ip bgp summary",
 	})
 	if err != nil {
 		return nil, err
