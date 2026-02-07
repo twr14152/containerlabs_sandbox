@@ -2,8 +2,8 @@
 
 Will work on as time permits.........
 
-device ---> (ai agent)----> controller ----> (Reports with Cli logic) ----> Network Engineer
-device <------------------- controller <---- (Cli)<-------------------------Network Engineer
+- device ---> (ai agent)----> controller ----> (Reports with Cli logic) ----> Network Engineer
+- device <------------------- controller <---- (Cli)<-------------------------Network Engineer
 
 
 Issue: at this point I am trying to understand how to build a network controller. AI is next.
