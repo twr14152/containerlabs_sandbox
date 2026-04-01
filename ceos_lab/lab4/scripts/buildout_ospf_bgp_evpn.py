@@ -1,5 +1,3 @@
-#!/usr/bin/python3.12
-
 import requests
 import json
 import urllib3
@@ -33,8 +31,8 @@ router bgp 65001
   neighbor 100.100.100.1 update-source loopback0
   neighbor 100.100.100.1 ebgp-multihop 5
   vlan 20
-      rd auto
-      route-target both 65001:20020
+      rd 65000:20020
+      route-target both 65000:20020
       redistribute learned
   address-family evpn
      neighbor 100.100.100.1 activate
@@ -71,8 +69,8 @@ router bgp 65001
   neighbor 100.100.100.2 update-source loopback0
   neighbor 100.100.100.2 ebgp-multihop 5
   vlan 20
-      rd auto
-      route-target both 65001:20020
+      rd 65000:20020
+      route-target both 65000:20020 
       redistribute learned
  address-family evpn
      neighbor 100.100.100.2 activate
@@ -110,8 +108,8 @@ router bgp 65002
   neighbor 100.100.100.2 update-source loopback0
   neighbor 100.100.100.2 ebgp-multihop 5
   vlan 20
-      rd auto
-      route-target both 65002:20020
+      rd 65000:20020
+      route-target both 65000:20020
       redistribute learned
   address-family evpn
      neighbor 100.100.100.1 activate
