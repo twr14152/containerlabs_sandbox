@@ -44,7 +44,6 @@ def get_data(hosts):
             os_version=excluded.os_version,
                            last_seen=excluded.last_seen""",
                            (hostname, mgmt_ip, os_version, last_seen))
-            #cursor.execute("INSERT INTO devices (hostname, mgmt_ip, os_version) VALUES (?, ?, ?)",(hostname, mgmt_ip, os_version))
             conn.commit()
             print(f"Device {hostname} inserted successfully.")
             print(f"Mgmt_IP {mgmt_ip} inserted successfully.")
