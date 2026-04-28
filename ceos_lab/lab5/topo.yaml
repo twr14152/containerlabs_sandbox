@@ -1,0 +1,65 @@
+name: lab5
+prefix: ""
+ 
+mgmt:
+  network: custom_mgmt
+  ipv4-subnet: 10.0.0.0/24
+
+topology:
+  kinds:
+    ceos:
+      image: ceosimage:latest
+    linux:
+      image: ghcr.io/srl-labs/network-multitool:latest
+  nodes:
+    ceos1:
+      kind: ceos
+      mgmt-ipv4: 10.0.0.2
+      startup-config: configs/ceos1.cfg
+
+    ceos2:
+      kind: ceos
+      mgmt-ipv4: 10.0.0.3
+      startup-config: configs/ceos2.cfg
+    
+
+    ceos3:
+      kind: ceos
+      mgmt-ipv4: 10.0.0.4
+      startup-config: configs/ceos3.cfg
+
+    h1:
+      kind: linux
+      mgmt-ipv4: 10.0.0.11
+      exec:
+        - ip addr add 10.0.1.10/24 dev eth1
+        - ip route add 10.0.2.0/24 via 10.0.1.1
+        - ip route add 10.0.3.0/24 via 10.0.1.1
+        - ip link set eth1 up
+    h2:
+      kind: linux
+      mgmt-ipv4: 10.0.0.12
+      exec:
+        - ip addr add 10.0.2.10/24 dev eth1
+        - ip route add 10.0.1.0/24 via 10.0.2.1
+        - ip route add 10.0.3.0/24 via 10.0.2.1
+        - ip link set eth1 up
+    h3:
+      kind: linux
+      mgmt-ipv4: 10.0.0.13
+      exec:
+        - ip addr add 10.0.3.10/24 dev eth1
+        - ip route add 10.0.1.0/24 via 10.0.3.1
+        - ip route add 10.0.2.0/24 via 10.0.3.1
+        - ip link set eth1 up
+
+
+  links:
+    - endpoints: ["ceos1:eth1", "ceos2:eth1"]
+    - endpoints: ["ceos1:eth2", "ceos3:eth1"]
+    - endpoints: ["ceos3:eth2", "ceos2:eth2"]
+    - endpoints: ["h1:eth1", "ceos1:eth3"]
+    - endpoints: ["h2:eth1", "ceos2:eth3"]
+    - endpoints: ["h3:eth1", "ceos3:eth3"]
+
+
