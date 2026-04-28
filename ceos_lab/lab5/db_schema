@@ -1,0 +1,38 @@
+Network DB Schema
+
+
+CREATE TABLE devices (
+    id INTEGER PRIMARY KEY,
+    hostname TEXT UNIQUE,
+    mgmt_ip TEXT,
+    os_version TEXT,
+    last_seen TEXT
+);
+
+
+CREATE TABLE configs (
+    id INTEGER PRIMARY KEY,
+    device_id INTEGER,
+    timestamp TEXT,
+    config TEXT,
+    config_hash TEXT,
+    FOREIGN KEY(device_id) REFERENCES devices(id)
+);
+
+
+CREATE TABLE drift_events (
+    id INTEGER PRIMARY KEY,
+    device_id INTEGER,
+    detected_at TEXT,
+    drift_type TEXT,
+    details TEXT,
+    resolved INTEGER DEFAULT 0
+);
+
+CREATE TABLE os_history (
+    id INTEGER PRIMARY KEY,
+    device_id INTEGER,
+    os_version TEXT,
+    detected_at TEXT
+);
+
